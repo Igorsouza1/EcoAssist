@@ -49,23 +49,23 @@ print(sys.path)
 
 # language settings
 lang = 0
-step_txt = ['Step', 'Paso']
-browse_txt = ['Browse', 'Examinar']
-cancel_txt = ["Cancel", "Cancelar"]
-change_folder_txt = ['Change folder', 'Cambiar carpeta']
-view_results_txt = ['View results', 'Ver resultados']
-again_txt = ['Again?', 'Otra vez?']
+step_txt = ['Passo', 'Paso']
+browse_txt = ['Procurar', 'Examinar']
+cancel_txt = ["Cancelar", "Cancelar"]
+change_folder_txt = ['Trocar Pasta', 'Cambiar carpeta']
+view_results_txt = ['Ver Resultado', 'Ver resultados']
+again_txt = ['Novamente?', 'Otra vez?']
 eg_txt = ['E.g.', 'Ejem.']
 new_project_txt = ["<new project>", "<nuevo proyecto>"]
-warning_txt = ["Warning", "Advertencia"]
-error_txt = ["Error", "Error"]
-invalid_value_txt = ["Invalid value", "Valor no válido"]
-perc_done_txt = ["Percentage done", "Porcentaje hecho"]
-processing_txt = ["Processing", "Procesando"]
-elapsed_time_txt = ["Elapsed time", "Tiempo transcurrido"]
-remaining_time_txt = ["Remaining time", "Tiempo restante"]
+warning_txt = ["Aviso", "Advertencia"]
+error_txt = ["Erro", "Error"]
+invalid_value_txt = ["Valor Invalido", "Valor no válido"]
+perc_done_txt = ["Porcentagem concluída", "Porcentaje hecho"]
+processing_txt = ["Processando", "Procesando"]
+elapsed_time_txt = ["Tempo decorrido", "Tiempo transcurrido"]
+remaining_time_txt = ["Tempo restante", "Tiempo restante"]
 running_on_txt = ["Running on", "Funcionando en"]
-of_txt = ["of", "de"]
+of_txt = ["de", "de"]
 
 ##########################################
 ############# MAIN FUNCTIONS #############
@@ -1200,7 +1200,7 @@ def start_deploy():
 
     # add image progress
     if var_process_img.get():
-        progress_img_frame = LabelFrame(md_progress_window, text=[" Process images ", " Procesar imágenes "][lang], pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue')
+        progress_img_frame = LabelFrame(md_progress_window, text=[" Processando Imagens ", " Procesar imágenes "][lang], pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue')
         progress_img_frame.configure(font=(text_font, 15, "bold"))
         progress_img_frame.grid(column=0, row=1, columnspan=2, sticky='ew')
         progress_img_frame.columnconfigure(0, weight=3, minsize=115)
@@ -1214,7 +1214,7 @@ def start_deploy():
 
     # add video progress
     if var_process_vid.get():
-        progress_vid_frame = LabelFrame(md_progress_window, text=[" Process videos ", " Procesar vídeos "][lang], pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue')
+        progress_vid_frame = LabelFrame(md_progress_window, text=[" Processando Videos ", " Procesar vídeos "][lang], pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue')
         progress_vid_frame.configure(font=(text_font, 15, "bold"))
         progress_vid_frame.grid(column=0, row=2, columnspan=2, sticky='ew')
         progress_vid_frame.columnconfigure(0, weight=3, minsize=115)
@@ -1246,7 +1246,7 @@ def start_deploy():
         
         # show error
         mb.showerror(title=error_txt[lang],
-                     message=["An error has occurred", "Ha ocurrido un error"][lang] + " (EcoAssist v" + version + "): '" + str(error) + "'.",
+                     message=["Ocorreu um erro", "Ha ocurrido un error"][lang] + " (EcoAssist v" + version + "): '" + str(error) + "'.",
                      detail=traceback.format_exc())
         
         # reset root with new states
@@ -2717,36 +2717,13 @@ deploy_tab.columnconfigure(1, weight=1, minsize=frame_width)
 deploy_tab_text = ['Deploy', 'Despliegue']
 tabControl.add(deploy_tab, text=deploy_tab_text[lang])
 
-# train tab
-train_tab = ttk.Frame(tabControl)
-train_tab.columnconfigure(0, weight=1, minsize=frame_width)
-train_tab.columnconfigure(1, weight=1, minsize=frame_width)
-train_tab_text = ['Train', 'Entrenamiento']
-tabControl.add(train_tab, text=train_tab_text[lang])
-
-# annotate tab
-annotate_tab = ttk.Frame(tabControl)
-annotate_tab.columnconfigure(0, weight=1, minsize=frame_width)
-annotate_tab.columnconfigure(1, weight=1, minsize=frame_width)
-annotate_tab_text = ['Annotate', 'Anotar']
-tabControl.add(annotate_tab, text=annotate_tab_text[lang])
-
-# help tab
-help_tab = ttk.Frame(tabControl)
-help_tab_text = ['Help', 'Ayuda']
-tabControl.add(help_tab, text=help_tab_text[lang])
-
-# about tab
-about_tab = ttk.Frame(tabControl)
-about_tab_text = ['About', 'Acerca de']
-tabControl.add(about_tab, text=about_tab_text[lang])
 
 # grid
 tabControl.grid()
 
 #### deploy tab
 ### first step
-fst_step_txt = ['Step 1: Choose folder to analyse', 'Paso 1: Elige Carpeta para analizar']
+fst_step_txt = ['Passo 1: Escolher pasta para ser analizada', 'Paso 1: Elige Carpeta para analizar']
 row_fst_step = 1
 fst_step = LabelFrame(deploy_tab, text=" " + fst_step_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
 fst_step.configure(font=(text_font, first_level_frame_font_size, "bold"))
@@ -2761,7 +2738,7 @@ btn_choose_folder = Button(master=fst_step, text=browse_txt[lang], command=lambd
 btn_choose_folder.grid(row=row_choose_folder, column=0, sticky='w', padx=5)
 
 ### second step
-snd_step_txt = ['Step 2: Run model', 'Paso 2: Iniciar Modelo']
+snd_step_txt = ['Passo 2: Executar Modelo', 'Paso 2: Iniciar Modelo']
 row_snd_step = 2
 snd_step = LabelFrame(deploy_tab, text=" " + snd_step_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
 snd_step.configure(font=(text_font, first_level_frame_font_size, "bold"))
@@ -2770,7 +2747,7 @@ snd_step.columnconfigure(0, weight=1, minsize=label_width)
 snd_step.columnconfigure(1, weight=1, minsize=widget_width)
 
 # choose model
-lbl_model_txt = ['Model', 'Modelo']
+lbl_model_txt = ['Modelo', 'Modelo']
 row_model = 0
 lbl_model = Label(master=snd_step, text=lbl_model_txt[lang], width=1, anchor="w")
 lbl_model.grid(row=row_model, sticky='nesw', pady=2)
@@ -2785,7 +2762,7 @@ dpd_model.grid(row=row_model, column=1, sticky='nesw', padx=5)
 dsp_model = Label(master=snd_step, textvariable=var_model_short, fg='darkred')
 
 # include subdirectories
-lbl_exclude_subs_txt = ["Don't process subdirectories", "No procesar subcarpetas"]
+lbl_exclude_subs_txt = ["Não processe subdiretórios", "No procesar subcarpetas"]
 row_exclude_subs = 1
 lbl_exclude_subs = Label(snd_step, text=lbl_exclude_subs_txt[lang], width=1, anchor="w")
 lbl_exclude_subs.grid(row=row_exclude_subs, sticky='nesw', pady=2)
@@ -2795,14 +2772,9 @@ chb_exclude_subs = Checkbutton(snd_step, variable=var_exclude_subs, anchor="w")
 chb_exclude_subs.grid(row=row_exclude_subs, column=1, sticky='nesw', padx=5)
 
 # limit detections
-lbl_excl_detecs_txt = ["Exclude detections from output file", "Excluir detecciones desde el archivo de salida"]
 row_excl_detecs = 2
-lbl_excl_detecs = Label(snd_step, text=lbl_excl_detecs_txt[lang], width=1, anchor="w")
-lbl_excl_detecs.grid(row=row_excl_detecs, sticky='nesw', pady=2)
 var_excl_detecs = BooleanVar()
 var_excl_detecs.set(False)
-chb_excl_detecs = Checkbutton(snd_step, variable=var_excl_detecs, command=toggle_md_thresh, anchor="w")
-chb_excl_detecs.grid(row=row_excl_detecs, column=1, sticky='nesw', padx=5)
 
 # threshold for model deploy (not grid by deafult)
 lbl_md_thresh_txt = ["Confidence threshold", "Umbral de confianza"]
@@ -2815,37 +2787,18 @@ dsp_md_thresh = Label(snd_step, textvariable=var_md_thresh)
 dsp_md_thresh.config(fg="darkred")
 
 # use custom image size
-lbl_use_custom_img_size_for_deploy_txt = ["Use custom image size", "Usar tamaño de imagen personalizado"]
 row_use_custom_img_size_for_deploy = 4
-lbl_use_custom_img_size_for_deploy = Label(snd_step, text=lbl_use_custom_img_size_for_deploy_txt[lang], width=1, anchor="w")
-lbl_use_custom_img_size_for_deploy.grid(row=row_use_custom_img_size_for_deploy, sticky='nesw', pady=2)
 var_use_custom_img_size_for_deploy = BooleanVar()
 var_use_custom_img_size_for_deploy.set(False)
-chb_use_custom_img_size_for_deploy = Checkbutton(snd_step, variable=var_use_custom_img_size_for_deploy, command=toggle_image_size_for_deploy, anchor="w")
-chb_use_custom_img_size_for_deploy.grid(row=row_use_custom_img_size_for_deploy, column=1, sticky='nesw', padx=5)
 
-# specify custom image size (not grid by default)
-lbl_image_size_for_deploy_txt = ["Image size", "Tamaño imagen"]
-row_image_size_for_deploy = 5
-lbl_image_size_for_deploy = Label(snd_step, text=" ↳ " + lbl_image_size_for_deploy_txt[lang], width=1, anchor="w")
-var_image_size_for_deploy = StringVar()
-ent_image_size_for_deploy = tk.Entry(snd_step, textvariable=var_image_size_for_deploy, fg='grey', state=NORMAL, width=1)
-ent_image_size_for_deploy.insert(0, f"{eg_txt[lang]}: 640")
-ent_image_size_for_deploy.bind("<FocusIn>", image_size_for_deploy_focus_in)
-ent_image_size_for_deploy.config(state=DISABLED)
 
 # use absolute paths
-lbl_abs_paths_txt = ["Use absolute paths in output file", "Usar rutas absolutas en archivo de salida"]
 row_abs_path = 6
-lbl_abs_paths = Label(snd_step, text=lbl_abs_paths_txt[lang], width=1, anchor="w")
-lbl_abs_paths.grid(row=row_abs_path, sticky='nesw', pady=2)
 var_abs_paths = BooleanVar()
 var_abs_paths.set(False)
-chb_abs_paths = Checkbutton(snd_step, variable=var_abs_paths, command=abs_paths_warning, anchor="w")
-chb_abs_paths.grid(row=row_abs_path, column=1, sticky='nesw', padx=5)
 
 # process images
-lbl_process_img_txt = ["Process all images in the folder specified", "Procesar todas las imágenes en carpeta elegida"]
+lbl_process_img_txt = ["Processe todas as imagens na pasta especificada", "Procesar todas las imágenes en carpeta elegida"]
 row_process_img = 7
 lbl_process_img = Label(snd_step, text=lbl_process_img_txt[lang], width=1, anchor="w")
 lbl_process_img.grid(row=row_process_img, sticky='nesw', pady=2)
@@ -2855,7 +2808,7 @@ chb_process_img = Checkbutton(snd_step, variable=var_process_img, command=toggle
 chb_process_img.grid(row=row_process_img, column=1, sticky='nesw', padx=5)
 
 ## image option frame (dsiabled by default)
-img_frame_txt = ["Image options", "Opciones de imagen"]
+img_frame_txt = ["Opções de imagem", "Opciones de imagen"]
 img_frame_row = 8
 img_frame = LabelFrame(snd_step, text=" ↳ " + img_frame_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, borderwidth=1, fg="grey80")
 img_frame.configure(font=(text_font, second_level_frame_font_size, "bold"))
@@ -2864,7 +2817,7 @@ img_frame.columnconfigure(0, weight=1, minsize=label_width)
 img_frame.columnconfigure(1, weight=1, minsize=widget_width)
 
 # use checkpoints
-lbl_use_checkpnts_txt = ["Use checkpoints while running", "Usar puntos de control mientras se ejecuta"]
+lbl_use_checkpnts_txt = ["Use checkpoints enquanto Executa", "Usar puntos de control mientras se ejecuta"]
 row_use_checkpnts = 0
 lbl_use_checkpnts = Label(img_frame, text="     " + lbl_use_checkpnts_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
 lbl_use_checkpnts.grid(row=row_use_checkpnts, sticky='nesw')
@@ -2874,7 +2827,7 @@ chb_use_checkpnts = Checkbutton(img_frame, variable=var_use_checkpnts, command=t
 chb_use_checkpnts.grid(row=row_use_checkpnts, column=1, sticky='nesw', padx=5)
 
 # checkpoint frequency
-lbl_checkpoint_freq_txt = ["Checkpoint frequency", "Frecuencia puntos de control"]
+lbl_checkpoint_freq_txt = ["Frequencia do Checkpoint", "Frecuencia puntos de control"]
 row_checkpoint_freq = 1
 lbl_checkpoint_freq = tk.Label(img_frame, text="        ↳ " + lbl_checkpoint_freq_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
 lbl_checkpoint_freq.grid(row=row_checkpoint_freq, sticky='nesw')
@@ -2886,7 +2839,7 @@ ent_checkpoint_freq.bind("<FocusIn>", checkpoint_freq_focus_in)
 ent_checkpoint_freq.config(state=DISABLED)
 
 # continue from checkpoint file
-lbl_cont_checkpnt_txt = ["Continue from last checkpoint file", "Continuar desde el último punto de control"]
+lbl_cont_checkpnt_txt = ["Continue do ultimo Checkpoint", "Continuar desde el último punto de control"]
 row_cont_checkpnt = 2
 lbl_cont_checkpnt = Label(img_frame, text="     " + lbl_cont_checkpnt_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
 lbl_cont_checkpnt.grid(row=row_cont_checkpnt, sticky='nesw')
@@ -2896,7 +2849,7 @@ chb_cont_checkpnt = Checkbutton(img_frame, variable=var_cont_checkpnt, state=DIS
 chb_cont_checkpnt.grid(row=row_cont_checkpnt, column=1, sticky='nesw', padx=5)
 
 # process videos
-lbl_process_vid_txt = ["Process all videos in the folder specified", "Procesar todos los vídeos en la carpeta elegida"]
+lbl_process_vid_txt = ["Processe todos os videos na pasta especificada", "Procesar todos los vídeos en la carpeta elegida"]
 row_process_vid = 9
 lbl_process_vid = Label(snd_step, text=lbl_process_vid_txt[lang], width=1, anchor="w")
 lbl_process_vid.grid(row=row_process_vid, sticky='nesw', pady=2)
@@ -2906,7 +2859,7 @@ chb_process_vid = Checkbutton(snd_step, variable=var_process_vid, command=toggle
 chb_process_vid.grid(row=row_process_vid, column=1, sticky='nesw', padx=5)
 
 ## video option frame (disabled by default)
-vid_frame_txt = ["Video options", "Opciones de vídeo"]
+vid_frame_txt = ["Opções de Video", "Opciones de vídeo"]
 vid_frame_row = 10
 vid_frame = LabelFrame(snd_step, text=" ↳ " + vid_frame_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, borderwidth=1, fg="grey80")
 vid_frame.configure(font=(text_font, second_level_frame_font_size, "bold"))
@@ -2915,7 +2868,7 @@ vid_frame.columnconfigure(0, weight=1, minsize=label_width)
 vid_frame.columnconfigure(1, weight=1, minsize=widget_width)
 
 # dont process all frames
-lbl_not_all_frames_txt = ["Don't process every frame", "No procesar cada fotograma"]
+lbl_not_all_frames_txt = ["Não processe todos os frames", "No procesar cada fotograma"]
 row_not_all_frames = 0
 lbl_not_all_frames = Label(vid_frame, text="     " + lbl_not_all_frames_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
 lbl_not_all_frames.grid(row=row_not_all_frames, sticky='nesw')
@@ -2925,7 +2878,7 @@ chb_not_all_frames = Checkbutton(vid_frame, variable=var_not_all_frames, command
 chb_not_all_frames.grid(row=row_not_all_frames, column=1, sticky='nesw', padx=5)
 
 # process every nth frame
-lbl_nth_frame_txt = ["Analyse every Nth frame", "Analizar cada Nº fotograma"]
+lbl_nth_frame_txt = ["Analisar cada Nº frame", "Analizar cada Nº fotograma"]
 row_nth_frame = 1
 lbl_nth_frame = tk.Label(vid_frame, text="        ↳ " + lbl_nth_frame_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
 lbl_nth_frame.grid(row=row_nth_frame, sticky='nesw')
@@ -2937,13 +2890,13 @@ ent_nth_frame.bind("<FocusIn>", nth_frame_focus_in)
 ent_nth_frame.config(state=DISABLED)
 
 # button start deploy
-btn_start_deploy_txt = ["Deploy model", "Desplegar modelo"]
+btn_start_deploy_txt = ["Executar modelo", "Desplegar modelo"]
 row_btn_start_deploy = 11
 btn_start_deploy = Button(snd_step, text=btn_start_deploy_txt[lang], command=start_deploy)
 btn_start_deploy.grid(row=row_btn_start_deploy, column=0, columnspan=2, sticky='ew')
 
 ### third step
-trd_step_txt = ["Step 3: Post-processing (optional)", "Paso 3: Post-Procesado (opcional)"]
+trd_step_txt = ["Passo 3: Pós Processamento", "Paso 3: Post-Procesado (opcional)"]
 trd_step_row = 2
 trd_step = LabelFrame(deploy_tab, text=" " + trd_step_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
 trd_step.configure(font=(text_font, first_level_frame_font_size, "bold"))
@@ -2952,7 +2905,7 @@ trd_step.columnconfigure(0, weight=1, minsize=label_width)
 trd_step.columnconfigure(1, weight=1, minsize=widget_width)
 
 # folder for results
-lbl_output_dir_txt = ["Destination folder", "Carpeta de destino"]
+lbl_output_dir_txt = ["Pasta de Destino", "Carpeta de destino"]
 row_output_dir = 0
 lbl_output_dir = Label(master=trd_step, text=lbl_output_dir_txt[lang], width=1, anchor="w")
 lbl_output_dir.grid(row=row_output_dir, sticky='nesw', pady=2)
@@ -2964,7 +2917,7 @@ btn_output_dir = Button(master=trd_step, text=browse_txt[lang], width=1, command
 btn_output_dir.grid(row=row_output_dir, column=1, sticky='nesw', padx=5)
 
 # separate files
-lbl_separate_files_txt = ["Separate files into subdirectories", "Separar archivos en subcarpetas"]
+lbl_separate_files_txt = ["Separar arquivos em subpastas", "Separar archivos en subcarpetas"]
 row_separate_files = 1
 lbl_separate_files = Label(trd_step, text=lbl_separate_files_txt[lang], width=1, anchor="w")
 lbl_separate_files.grid(row=row_separate_files, sticky='nesw', pady=2)
@@ -2974,7 +2927,7 @@ chb_separate_files = Checkbutton(trd_step, variable=var_separate_files, command=
 chb_separate_files.grid(row=row_separate_files, column=1, sticky='nesw', padx=5)
 
 ## separation frame
-sep_frame_txt = ["Separation options", "Opciones de separación"]
+sep_frame_txt = ["Opções de separação", "Opciones de separación"]
 sep_frame_row = 2
 sep_frame = LabelFrame(trd_step, text=" ↳ " + sep_frame_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, borderwidth=1, fg="grey80")
 sep_frame.configure(font=(text_font, second_level_frame_font_size, "bold"))
@@ -2983,7 +2936,7 @@ sep_frame.columnconfigure(0, weight=1, minsize=label_width)
 sep_frame.columnconfigure(1, weight=1, minsize=widget_width)
 
 # method of file placement
-lbl_file_placement_txt = ["Method of file placement", "Método de desplazamiento de archivo"]
+lbl_file_placement_txt = ["Método de colocação de arquivo", "Método de desplazamiento de archivo"]
 row_file_placement = 0
 lbl_file_placement = Label(sep_frame, text="     " + lbl_file_placement_txt[lang], pady=2, width=1, anchor="w")
 lbl_file_placement.grid(row=row_file_placement, sticky='nesw')
@@ -2995,44 +2948,24 @@ rad_file_placement_copy = Radiobutton(sep_frame, text=["Move", "Mover"][lang], v
 rad_file_placement_copy.grid(row=row_file_placement, column=1, sticky='e', padx=5)
 
 # separate per confidence
-lbl_sep_conf_txt = ["Sort results based on confidence", "Clasificar resultados basados en confianza"]
 row_sep_conf = 1
-lbl_sep_conf = Label(sep_frame, text="     " + lbl_sep_conf_txt[lang], width=1, anchor="w")
-lbl_sep_conf.grid(row=row_sep_conf, sticky='nesw', pady=2)
 var_sep_conf = BooleanVar()
 var_sep_conf.set(False)
-chb_sep_conf = Checkbutton(sep_frame, variable=var_sep_conf, anchor="w")
-chb_sep_conf.grid(row=row_sep_conf, column=1, sticky='nesw', padx=5)
 
 ## visualize images
-lbl_vis_files_txt = ["Draw bounding boxes and confidences", "Dibujar contornos y confianzas"]
 row_vis_files = 3
-lbl_vis_files = Label(trd_step, text=lbl_vis_files_txt[lang], width=1, anchor="w")
-lbl_vis_files.grid(row=row_vis_files, sticky='nesw', pady=2)
 var_vis_files = BooleanVar()
 var_vis_files.set(False)
-chb_vis_files = Checkbutton(trd_step, variable=var_vis_files, anchor="w")
-chb_vis_files.grid(row=row_vis_files, column=1, sticky='nesw', padx=5)
 
 ## crop images
-lbl_crp_files_txt = ["Crop detections", "Recortar detecciones"]
 row_crp_files = 4
-lbl_crp_files = Label(trd_step, text=lbl_crp_files_txt[lang], width=1, anchor="w")
-lbl_crp_files.grid(row=row_crp_files, sticky='nesw', pady=2)
 var_crp_files = BooleanVar()
 var_crp_files.set(False)
-chb_crp_files = Checkbutton(trd_step, variable=var_crp_files, anchor="w")
-chb_crp_files.grid(row=row_crp_files, column=1, sticky='nesw', padx=5)
 
 # annotate images
-lbl_yol_files_txt = ["Create annotations for training purposes", "Crear anotaciones con fines de entrenamiento"]
 row_yol_files = 5
-lbl_yol_files = Label(trd_step, text=lbl_yol_files_txt[lang], width=1, anchor="w")
-lbl_yol_files.grid(row=row_yol_files, sticky='nesw', pady=2)
 var_yol_files = BooleanVar()
 var_yol_files.set(False)
-chb_yol_files = Checkbutton(trd_step, variable=var_yol_files, command=toggle_annot_create_frame, anchor="w")
-chb_yol_files.grid(row=row_yol_files, column=1, sticky='nesw', padx=5)
 
 ## subframe for the annotation creation options
 annot_create_frame_txt = ["Annotation options", "Opciones de anotación"]
@@ -3044,29 +2977,17 @@ annot_create_frame.columnconfigure(0, weight=1, minsize=label_width)
 annot_create_frame.columnconfigure(1, weight=1, minsize=widget_width)
 
 # uniquify filenames and combine files in one folder
-lbl_uniquify_txt = ["Combine files and create unique names", "Combinar archivos y crear nombres únicos"]
 row_uniquify = 0
-lbl_uniquify = Label(annot_create_frame, text="     " + lbl_uniquify_txt[lang], width=1, anchor="w")
-lbl_uniquify.grid(row=row_uniquify, sticky='nesw', pady=2)
 var_uniquify = BooleanVar()
 var_uniquify.set(False)
-chb_uniquify = Checkbutton(annot_create_frame, variable=var_uniquify, command=toggle_label_placement, anchor="w")
-chb_uniquify.grid(row=row_uniquify, column=1, sticky='nesw', padx=5)
 
 # method of file placement
-lbl_label_placement_txt = ["Method of file placement", "Método de desplazamiento de archivo"]
 row_label_placement = 1
-lbl_label_placement = Label(annot_create_frame, text="        ↳ " + lbl_label_placement_txt[lang], pady=2, state=DISABLED, width=1, anchor="w")
-lbl_label_placement.grid(row=row_label_placement, sticky='nesw')
 var_label_placement = IntVar()
 var_label_placement.set(2)
-rad_label_placement_move = Radiobutton(annot_create_frame, text=["Copy", "Copiar"][lang], variable=var_label_placement, value=2)
-rad_label_placement_move.grid(row=row_label_placement, column=1, sticky='w', padx=5)
-rad_label_placement_copy = Radiobutton(annot_create_frame, text=["Move", "Mover"][lang], variable=var_label_placement, value=1)
-rad_label_placement_copy.grid(row=row_label_placement, column=1, sticky='e', padx=5)
 
 # create csv files
-lbl_csv_txt = ["Export results to .csv and retrieve metadata", "Exportar a .csv y recuperar los metadatos"]
+lbl_csv_txt = ["Exportar resultados para .csv e recuperar metadados", "Exportar a .csv y recuperar los metadatos"]
 row_csv = 7
 lbl_csv = Label(trd_step, text=lbl_csv_txt[lang], width=1, anchor="w")
 lbl_csv.grid(row=row_csv, sticky='nesw', pady=2)
@@ -3076,7 +2997,7 @@ chb_csv = Checkbutton(trd_step, variable=var_csv, anchor="w")
 chb_csv.grid(row=row_csv, column=1, sticky='nesw', padx=5)
 
 # threshold
-lbl_thresh_txt = ["Confidence threshold", "Umbral de confianza"]
+lbl_thresh_txt = ["Limite de confiança", "Umbral de confianza"]
 row_lbl_thresh = 8
 lbl_thresh = Label(trd_step, text=lbl_thresh_txt[lang], width=1, anchor="w")
 lbl_thresh.grid(row=row_lbl_thresh, sticky='nesw', pady=2)
@@ -3089,1035 +3010,12 @@ dsp_thresh.config(fg="darkred")
 dsp_thresh.grid(row=row_lbl_thresh, column=0, sticky='e', padx=0)
 
 # postprocessing button
-btn_start_postprocess_txt = ["Post-process files", "Post-procesar archivos"]
+btn_start_postprocess_txt = ["Executar pós-processamento", "Post-procesar archivos"]
 row_start_postprocess = 9
 btn_start_postprocess = Button(trd_step, text=btn_start_postprocess_txt[lang], command=start_postprocess)
 btn_start_postprocess.grid(row=row_start_postprocess, column=0, columnspan = 2, sticky='ew')
 
-#### train tab
-### required parameters
-req_params_txt = ["Required parameters", "Parámetros requeridos"]
-req_params_row = 1
-req_params = LabelFrame(train_tab, text=" " + req_params_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
-req_params.configure(font=(text_font, first_level_frame_font_size, "bold"))
-req_params.grid(column=0, row=req_params_row, sticky='nesw')
-req_params.columnconfigure(0, weight=1, minsize=label_width)
-req_params.columnconfigure(1, weight=1, minsize=widget_width)
 
-# train type
-lbl_train_type_txt = ["Training type", "Tipo de entrenamiento"]
-row_train_type = 0
-lbl_train_type = Label(req_params, text=lbl_train_type_txt[lang], pady=2, width=1, anchor="w")
-lbl_train_type.grid(row=row_train_type, sticky='nesw', pady=2)
-dpd_train_type_options = [["Start new training", "Resume existing"], ["Comenzar nuevo", "Reanudar existente"]]
-var_train_type = StringVar(req_params)
-var_train_type.set(dpd_train_type_options[lang][0])
-dpd_train_type = OptionMenu(req_params, var_train_type, *dpd_train_type_options[lang], command=toggle_train_type)
-dpd_train_type.configure(width=1)
-dpd_train_type.grid(row=row_train_type, column=1, sticky='nesw', padx=5)
-
-# folder with annotated data
-lbl_annotated_data_txt = ["Folder with labeled data", "Carpeta con datos etiquetados"]
-row_annotated_data = 1
-lbl_annotated_data = Label(master=req_params, text=lbl_annotated_data_txt[lang], width=1, anchor="w")
-lbl_annotated_data.grid(row=row_annotated_data, sticky='nesw', pady=2)
-var_annotated_data = StringVar()
-var_annotated_data_short = StringVar()
-dsp_annotated_data = Label(master=req_params, textvariable=var_annotated_data_short, fg='darkred')
-btn_annotated_data = Button(master=req_params, text=browse_txt[lang], width=1, command=lambda: browse_dir(var_annotated_data, var_annotated_data_short, dsp_annotated_data, 25, row_annotated_data, 0, 'e'))
-btn_annotated_data.grid(row=row_annotated_data, column=1, sticky='nesw', padx=5)
-
-# transfer learning model
-lbl_learning_model_txt = ["Retrain from", "Reentrenar desde"]
-row_learning_model = 2
-lbl_learning_model = Label(req_params, text=lbl_learning_model_txt[lang], pady=2, width=1, anchor="w")
-lbl_learning_model.grid(row=row_learning_model, sticky='nesw', pady=2)
-dpd_learning_model_options = [["MegaDetector 5a", "MegaDetector 5b", "YOLOv5 Nano", "YOLOv5 Small", "YOLOv5 Medium", "YOLOv5 Large", "YOLOv5 XLarge", "Custom model", "Scratch"], ["MegaDetector 5a", "MegaDetector 5b", "YOLOv5 Ínfimo", "YOLOv5 Pequeño", "YOLOv5 Medio", "YOLOv5 Grande", "YOLOv5 XL", "Otro modelo", "Desde cero"]]
-var_learning_model = StringVar(req_params)
-var_learning_model.set(dpd_learning_model_options[lang][0])
-var_learning_model_short = StringVar()
-var_learning_model_path = StringVar()
-var_learning_model_path.set(os.path.join(EcoAssist_files, "pretrained_models", "md_v5a.0.0.pt"))
-dpd_learning_model = OptionMenu(req_params, var_learning_model, *dpd_learning_model_options[lang], command=set_learning_model)
-dpd_learning_model.configure(width=1)
-dpd_learning_model.grid(row=row_learning_model, column=1, sticky='nesw', padx=5)
-dsp_learning_model = Label(master=req_params, textvariable=var_learning_model_short, fg='darkred')
-
-# model architecture
-lbl_model_architecture_txt = ["Model architecture", "Arquitectura del modelo"]
-row_model_architecture = 3
-lbl_model_architecture = Label(req_params, text=lbl_model_architecture_txt[lang], pady=2, width=1, anchor="w")
-dpd_model_architecture_options = [["YOLOv5 Nano", "YOLOv5 Small", "YOLOv5 Medium", "YOLOv5 Large", "YOLOv5 XLarge", "Other config", "None"], ["YOLOv5 Ínfimo", "YOLOv5 Pequeño", "YOLOv5 Medio", "YOLOv5 Grande", "YOLOv5 XL", "Otro archivo", "Ninguno"]]
-var_model_architecture = StringVar(req_params)
-var_model_architecture.set(dpd_model_architecture_options[lang][0])
-var_model_architecture_short = StringVar()
-var_model_architecture_path = StringVar()
-var_model_architecture_path.set(os.path.join(EcoAssist_files, "yolov5", "models", "yolov5m.yaml"))
-dpd_model_architecture = OptionMenu(req_params, var_model_architecture, *dpd_model_architecture_options[lang], command=set_model_architecture)
-dpd_model_architecture.configure(width=1)
-dsp_model_architecture = Label(master=req_params, textvariable=var_model_architecture_short, fg='darkred')
-
-# number of epochs
-lbl_n_epochs_txt = ["Number of epochs", "Número de épocas"]
-row_n_epochs = 4
-lbl_n_epochs = tk.Label(req_params, text=lbl_n_epochs_txt[lang], pady=2, width=1, anchor="w")
-lbl_n_epochs.grid(row=row_n_epochs, sticky='nesw')
-var_n_epochs = StringVar()
-ent_n_epochs = tk.Entry(req_params, textvariable=var_n_epochs, fg='grey', width=1)
-ent_n_epochs.grid(row=row_n_epochs, column=1, sticky='nesw', padx=5)
-ent_n_epochs.insert(0, f"{eg_txt[lang]}: 300")
-ent_n_epochs.bind("<FocusIn>", n_epochs_focus_in)
-
-# folder for results
-lbl_results_dir_txt = ["Destination folder", "Carpeta destino"]
-row_results_dir = 5
-lbl_results_dir = Label(master=req_params, text=lbl_results_dir_txt[lang], width=1, anchor="w")
-lbl_results_dir.grid(row=row_results_dir, sticky='nesw', pady=2)
-var_results_dir = StringVar()
-var_results_dir_short = StringVar()
-dsp_results_dir = Label(master=req_params, textvariable=var_results_dir_short, fg='darkred')
-btn_results_dir = Button(master=req_params, text=browse_txt[lang], width=1, command=lambda: [browse_dir(var_results_dir, var_results_dir_short, dsp_results_dir, 25, row_results_dir, 0, 'e'), grid_project_name()])
-btn_results_dir.grid(row=row_results_dir, column=1, sticky='nesw', padx=5)
-
-# specify resume checkpoint
-lbl_resume_checkpoint_txt = ["Specify resume checkpoint", "Especificar punto control reanudación"]
-row_resume_checkpoint = 6
-lbl_resume_checkpoint = Label(master=req_params, text=lbl_resume_checkpoint_txt[lang], width=1, anchor="w")
-var_resume_checkpoint = StringVar()
-var_resume_checkpoint_short = StringVar()
-var_resume_checkpoint_path = StringVar()
-var_resume_checkpoint_path.set("")
-dsp_resume_checkpoint = Label(master=req_params, textvariable=var_resume_checkpoint_short, fg='darkred')
-btn_resume_checkpoint = Button(master=req_params, text=browse_txt[lang], width=1, command=lambda: browse_file(var_resume_checkpoint, var_resume_checkpoint_short, var_resume_checkpoint_path, dsp_resume_checkpoint, [("Model file","*.pt")], 20, ["dummy"], row_resume_checkpoint))
-
-# name of the project
-row_project_name = 7
-var_project_name = StringVar()
-ent_project_name = tk.Entry(req_params, textvariable=var_project_name, fg='grey', width=1)
-lbl_project_name_txt = ["Project name", "Nombre del proyecto"]
-lbl_project_name = tk.Label(req_params, text=lbl_project_name_txt[lang], pady=2, width=1, anchor="w")
-# the entry box, dropdown menu and button are created through grid_project_name() and swtich_dropdown_to_entry()
-
-### advanced settings
-adv_params_txt = ["Advanced settings (optional)", "Configuración avanzada (opcional)"]
-adv_params_row = 2
-adv_params = LabelFrame(train_tab, text=" " + adv_params_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
-adv_params.configure(font=(text_font, first_level_frame_font_size, "bold"))
-adv_params.grid(column=0, row=adv_params_row, sticky='nesw')
-adv_params.columnconfigure(0, weight=1, minsize=label_width)
-adv_params.columnconfigure(1, weight=1, minsize=widget_width)
-
-# proportion of validation data
-lbl_val_prop_txt = ["Proportion as validation data", "Proporción datos para validación"]
-row_lbl_val_prop = 0
-lbl_val_prop = Label(adv_params, text=lbl_val_prop_txt[lang], width=1, anchor="w")
-lbl_val_prop.grid(row=row_lbl_val_prop, sticky='nesw', pady=2)
-var_val_prop = DoubleVar()
-var_val_prop.set(0.1)
-scl_val_prop = Scale(adv_params, from_=0.01, to=1, resolution=0.01, orient=HORIZONTAL, variable=var_val_prop, showvalue=0, width=10, length=1)
-scl_val_prop.grid(row=row_lbl_val_prop, column=1, sticky='ew', padx=10)
-dsp_val_prop = Label(adv_params, textvariable=var_val_prop)
-dsp_val_prop.config(fg="darkred")
-dsp_val_prop.grid(row=row_lbl_val_prop, column=0, sticky='e', padx=0)
-
-# proportion of test data
-lbl_test_prop_txt = ["Proportion as test data", "Proporción datos para prueba"]
-row_lbl_test_prop = 1
-lbl_test_prop = Label(adv_params, text=lbl_test_prop_txt[lang], width=1, anchor="w")
-lbl_test_prop.grid(row=row_lbl_test_prop, sticky='nesw', pady=2)
-var_test_prop = DoubleVar()
-var_test_prop.set(0.2)
-scl_test_prop = Scale(adv_params, from_=0.000000001, to=1, resolution=0.01, orient=HORIZONTAL, variable=var_test_prop, showvalue=0, width=10, length=1) # not 0 because display needs two digits
-scl_test_prop.grid(row=row_lbl_test_prop, column=1, sticky='ew', padx=10)
-dsp_test_prop = Label(adv_params, textvariable=var_test_prop)
-dsp_test_prop.config(fg="darkred")
-dsp_test_prop.grid(row=row_lbl_test_prop, column=0, sticky='e', padx=0)
-
-# use GPU for training
-lbl_train_gpu_txt = ["Search for GPU and use if available", "Buscar GPU y utilizarla si está disponible"]
-row_train_gpu = 2
-lbl_train_gpu = Label(adv_params, text=lbl_train_gpu_txt[lang], width=1, anchor="w")
-lbl_train_gpu.grid(row=row_train_gpu, sticky='nesw', pady=2)
-var_train_gpu = BooleanVar()
-if platform.system() == 'Darwin': # Apple Silicon still has some issues with running on MPS 
-    var_train_gpu.set(False)
-else:
-    var_train_gpu.set(True)
-chb_train_gpu = Checkbutton(adv_params, variable=var_train_gpu, anchor = "w")
-chb_train_gpu.grid(row=row_train_gpu, column=1, sticky='nesw', padx=5)
-
-# batch size
-lbl_batch_size_txt = ["Batch size", "Tamaño de lote"]
-lbl_batch_size_txt_extra = ["(leave blank for auto detect maximum)", ""]
-row_batch_size = 3
-lbl_batch_size = tk.Label(adv_params, text=f"{lbl_batch_size_txt[lang]} {lbl_batch_size_txt_extra[lang]}", pady=2, width=1, anchor="w")
-lbl_batch_size.grid(row=row_batch_size, sticky='nesw')
-var_batch_size = StringVar()
-ent_batch_size = tk.Entry(adv_params, textvariable=var_batch_size, fg='grey', width=1)
-ent_batch_size.grid(row=row_batch_size, column=1, sticky='nesw', padx=5)
-ent_batch_size.insert(0, f"{eg_txt[lang]}: 8")
-ent_batch_size.bind("<FocusIn>", batch_size_focus_in)
-
-# number of workers
-lbl_n_workers_txt = ["Number of workers", "Número de núcleos"]
-lbl_n_workers_txt_extra = ["(leave blank for default 4)", ""]
-row_n_workers = 4
-lbl_n_workers = tk.Label(adv_params, text=f"{lbl_n_workers_txt[lang]} {lbl_n_workers_txt_extra[lang]}", pady=2, width=1, anchor="w")
-lbl_n_workers.grid(row=row_n_workers, sticky='nesw')
-var_n_workers = StringVar()
-ent_n_workers = tk.Entry(adv_params, textvariable=var_n_workers, fg='grey', width=1)
-ent_n_workers.grid(row=row_n_workers, column=1, sticky='nesw', padx=5)
-ent_n_workers.insert(0, f"{eg_txt[lang]}: 2")
-ent_n_workers.bind("<FocusIn>", n_workers_focus_in)
-
-# image size
-lbl_image_size_for_training_txt = ["Image size", "Tamaño imagen"]
-lbl_image_size_for_training_txt_extra = ["(leave blank for auto selection)", ""]
-row_image_size_for_training = 5
-lbl_image_size_for_training = tk.Label(adv_params, text=f"{lbl_image_size_for_training_txt[lang]} {lbl_image_size_for_training_txt_extra[lang]}", pady=2, width=1, anchor="w")
-lbl_image_size_for_training.grid(row=row_image_size_for_training, sticky='nesw')
-var_image_size_for_training = StringVar()
-ent_image_size_for_training = tk.Entry(adv_params, textvariable=var_image_size_for_training, fg='grey', width=1)
-ent_image_size_for_training.grid(row=row_image_size_for_training, column=1, sticky='nesw', padx=5)
-ent_image_size_for_training.insert(0, f"{eg_txt[lang]}: 1280")
-ent_image_size_for_training.bind("<FocusIn>", image_size_for_training_focus_in)
-
-# cache images
-lbl_cache_imgs_txt = ["Cache images for faster training", "Almacenar imágenes en cache"]
-row_cache_imgs = 6
-lbl_cache_imgs = Label(adv_params, text=lbl_cache_imgs_txt[lang], width=1, anchor="w")
-lbl_cache_imgs.grid(row=row_cache_imgs, sticky='nesw', pady=2)
-var_cache_imgs = BooleanVar()
-var_cache_imgs.set(False)
-chb_cache_imgs = Checkbutton(adv_params, variable=var_cache_imgs, anchor = "w")
-chb_cache_imgs.grid(row=row_cache_imgs, column=1, sticky='nesw', padx=5)
-
-# hyperparameters config file
-lbl_hyper_file_txt = ["Hyperparameter configuration file", "Archivo configuración hyperparámetros"]
-row_hyper_file = 7
-lbl_hyper_file = Label(adv_params, text=lbl_hyper_file_txt[lang], pady=2, width=1, anchor="w")
-lbl_hyper_file.grid(row=row_hyper_file, sticky='nesw', pady=2)
-dpd_hyper_file_options = [["None", "Low augmentation", "Med augmentation", "High augmentation", "Objects365 training", "VOC training", "Other"], ["Ninguno", "Aumento bajo", "Aumento medio", "Aumento alto", "Objects365", "VOC", "Otro"]]
-var_hyper_file = StringVar(adv_params)
-var_hyper_file.set(dpd_hyper_file_options[lang][0])
-var_hyper_file_short = StringVar()
-var_hyper_file_path = StringVar()
-var_hyper_file_path.set("")
-dpd_hyper_file = OptionMenu(adv_params, var_hyper_file, *dpd_hyper_file_options[lang], command=set_hyper_file)
-dpd_hyper_file.configure(width=1)
-dpd_hyper_file.grid(row=row_hyper_file, column=1, sticky='nesw', padx=5)
-dsp_hyper_file = Label(master=adv_params, textvariable=var_hyper_file_short, fg='darkred')
-
-# evolve hyperparameters
-lbl_evolve_txt = ["Evolve hyperparameters", "Evolución de hyperparámetros"]
-row_evolve = 8
-lbl_evolve = Label(adv_params, text=lbl_evolve_txt[lang], width=1, anchor="w")
-lbl_evolve.grid(row=row_evolve, sticky='nesw', pady=2)
-var_evolve = BooleanVar()
-var_evolve.set(False)
-chb_evolve = Checkbutton(adv_params, variable=var_evolve, command=toggle_n_evolutions, anchor = "w")
-chb_evolve.grid(row=row_evolve, column=1, sticky='nesw', padx=5)
-
-# number of generations to evolve
-lbl_n_generations_txt = ["Number of generations", "Número de generaciones"]
-lbl_n_generations_txt_extra = ["(leave blank for default 300)", ""]
-row_n_generations = 9
-lbl_n_generations = tk.Label(adv_params, text=f"{lbl_n_generations_txt[lang]} {lbl_n_generations_txt_extra[lang]}", pady=2, width=1, anchor="w")
-var_n_generations = StringVar()
-ent_n_generations = tk.Entry(adv_params, textvariable=var_n_generations, fg='grey', width=1)
-ent_n_generations.insert(0, f"{eg_txt[lang]}: 500")
-ent_n_generations.bind("<FocusIn>", n_generations_focus_in)
-
-# name of the run
-lbl_run_name_txt = ["Run name", "Nombre de la ejecución"]
-lbl_run_name_txt_extra = ["(leave blank for auto iterate)", ""]
-row_run_name = 10
-lbl_run_name = tk.Label(adv_params, text=f"{lbl_run_name_txt[lang]} {lbl_run_name_txt_extra[lang]}", pady=2, width=1, anchor="w")
-lbl_run_name.grid(row=row_run_name, sticky='nesw')
-var_run_name = StringVar()
-ent_run_name = tk.Entry(adv_params, textvariable=var_run_name, fg='grey', width=1)
-ent_run_name.grid(row=row_run_name, column=1, sticky='nesw', padx=5)
-ent_run_name.insert(0, f"{eg_txt[lang]}: {['Initial run', 'Proceso inicial'][lang]}")
-ent_run_name.bind("<FocusIn>", run_name_focus_in)
-
-# number of frozen layers
-lbl_n_freeze_layers_txt = ["Number of layers to freeze", "Número de capas a congelar"]
-lbl_n_freeze_layers_txt_extra = ["(leave blank for all)", ""]
-row_n_freeze_layers = 11
-lbl_n_freeze_layers = tk.Label(adv_params, text=f"{lbl_n_freeze_layers_txt[lang]} {lbl_n_freeze_layers_txt_extra[lang]}", pady=2, width=1, anchor="w")
-var_n_freeze_layers = StringVar()
-ent_n_freeze_layers = tk.Entry(adv_params, textvariable=var_n_freeze_layers, fg='grey', width=1)
-ent_n_freeze_layers.insert(0, f"{eg_txt[lang]}: 12")
-ent_n_freeze_layers.bind("<FocusIn>", n_freeze_layers_focus_in)
-
-# create command button
-btn_start_training_txt = ["Start training", "Comenzar entrenamiento"]
-row_start_training = 5
-btn_start_training = Button(train_tab, text=btn_start_training_txt[lang], command=start_training)
-btn_start_training.grid(row=row_start_training, column=0, sticky='ew')
-
-### console output
-train_output_txt = ["Console output", "Salida de consola"]
-row_train_output = 0
-train_output = LabelFrame(train_tab, text=" " + train_output_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
-train_output.configure(font=(text_font, first_level_frame_font_size, "bold"))
-train_output.grid(column=1, row=row_train_output, rowspan=4, sticky='nesw')
-txt_train_output = Text(train_output, wrap=WORD, width=1, height=1)
-txt_train_output.pack(fill="both", expand=True)
-cancel_training_bool = BooleanVar()
-cancel_training_bool.set(False)
-
-# cancel button
-btn_cancel_training_txt = ["Cancel training", "Cancelar entrenamiento"]
-row_cancel_training = 5
-btn_cancel_training = Button(train_tab, text=btn_cancel_training_txt[lang], command=cancel_training)
-btn_cancel_training.grid(row=row_cancel_training, column=1, sticky='ew')
-btn_cancel_training.config(state=DISABLED)
-
-#### annotate tab
-annotate_text = Text(annotate_tab, width=1, height=1, wrap=WORD) 
-annotate_text.tag_config('frame', font=f'{text_font} {int(15 * text_size_adjustment_factor)} bold', foreground='darkblue', lmargin1=10, lmargin2=10) 
-annotate_text.tag_config('explanation', font=f'{text_font} {int(13 * text_size_adjustment_factor)} normal', lmargin1=40, lmargin2=40)
-annotate_text.tag_config('bulletpoint', font=f'{text_font} {int(13 * text_size_adjustment_factor)} normal', lmargin1=40, lmargin2=60)
-hyperlink3 = HyperlinkManager(annotate_text)
-
-# function to write text which can be called when user changes language settings
-def write_annotate_tab():
-    global annotate_text
-    line_number = 1 
-
-    # labelimg software
-    annotate_text.insert(END, ["LabelImg software\n", "LabelImg programa\n"][lang])
-    annotate_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["Here you can annotate your images using the open-source annotation software ", "Aquí puedes anotar tus imágenes usando el software open-source "][lang])
-    annotate_text.insert(INSERT, "LabelImg", hyperlink3.add(partial(webbrowser.open, "https://github.com/tzutalin/labelImg")))
-    annotate_text.insert(END, [" created by Tzutalin. This application makes it easy to visually review annotations and adjust their labels, which are required to train your "
-                               "own object detection model.\n\n",
-                               " creado por Tzutalin. Esta aplicación hace fácil visualizar las anotaciones y ajustar sus etiquetas, que son requeridas para entrenar tu "
-                               "propio modelo de detección de objetos.\n\n"][lang])
-    annotate_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # steps
-    annotate_text.insert(END, ["Steps\n", "Pasos\n"][lang])
-    annotate_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["1. Select a folder with images you would like to annotate using the 'Browse' button below.\n", 
-                               "1. Seleccione una carpeta con imágenes que desee anotar utilizando el botón 'Examinar'.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["2. If the classes are not yet defined in a file named 'classes.txt' inside this folder, you will be asked to fill in the classes you'd like to work with. "
-                               "Don't worry, you can always add more classes if you need to. Removing classes is difficult though, so choose wisely.\n",
-                               "2. Si las clases aún no están definidas en un archivo llamado 'classes.txt' dentro de esta carpeta, se te pedirá que rellenes las clases con las que te "
-                               "gustaría trabajar. No te preocupes, siempre puedes añadir más clases si lo necesitas. Eliminar clases es difícil, así que elige bien.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["3. Click the 'Start annotation' button to open the program. It will open the images (and annotation files, if present) specified in step 1.\n",
-                               "3. Haga clic en el botón 'Iniciar anotación' para abrir el programa. Se abrirán las imágenes (y los archivos de anotación, si los hay) especificados en el"
-                               " paso 1.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["4. Make sure LabelImg is set to save the annotations in 'YOLO' format. Right below the 'Save' button in the toolbar, check if 'YOLO' is set. If not, "
-                               "click the 'PascalVOC' or 'CreateML' button to switch to 'YOLO' format.\n",
-                               "4. Asegúrese de que LabelImg está configurado para guardar las anotaciones en formato 'YOLO'. Justo debajo del botón 'Guardar' de la barra de "
-                               "herramientas, compruebe si está configurado 'YOLO'. Si no es así, haga clic en el botón 'PascalVOC' o 'CreateML' para cambiar al formato 'YOLO'.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["5. See ", "5. Consulte "][lang])
-    annotate_text.insert(INSERT, ["this website", "este sitio web"][lang], hyperlink3.add(partial(webbrowser.open, "https://github.com/heartexlabs/labelImg#hotkeys")))
-    annotate_text.insert(END, [" for hotkeys and more information.\n\n", " para ver las teclas de acceso rápido y más información.\n\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # note
-    annotate_text.insert(END, ["Note\n", "Nota\n"][lang])
-    annotate_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["- After annotation, each image containing a detection will have a separate txt file with the annotation information. This txt file has the same file name "
-                               "as the image. That is how the software knows the two belong together. So, after annotation, you can't change the file names anymore.\n",
-                               "- Tras la anotación, cada imagen que contenga una detección tendrá un archivo txt independiente con la información de la anotación. Este archivo txt tiene "
-                               "el mismo nombre que la imagen. Así es como el programa sabe que las dos van juntas. Por lo tanto, después de la anotación, ya no se pueden cambiar los "
-                               "nombres de los archivos.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    annotate_text.insert(END, ["- A file named 'classes.txt' defines the list of class names that your YOLO label refers to. That means that you can't change the order, or remove classes."
-                               " However, adding an extra class to the end of the list is possible via LabelImg itself or by manually adding a class at the bottom of the list in a text "
-                               "editor. In the latter case, you'll have to restart the application for it to have effect.\n",
-                               "- Un archivo llamado 'classes.txt' define la lista de nombres de clases a las que se refiere su etiqueta YOLO. Esto significa que no puede cambiar el orden"
-                               " ni eliminar clases. Sin embargo, añadir una clase extra al final de la lista es posible a través del propio LabelImg o añadiendo manualmente una clase al "
-                               "final de la lista en un editor de texto. En este último caso, tendrá que reiniciar la aplicación para que tenga efecto.\n"][lang])
-    annotate_text.tag_add('bulletpoint', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # configure annotation text
-    annotate_text.pack(fill="both", expand=True)
-    annotate_text.configure(font=(text_font, 11, "bold"), state=DISABLED)
-write_annotate_tab()
-
-# frame
-annot_frame_txt = ["Required input", "Entradas necesarias"]
-row_annot_frame = 0
-annot_frame = LabelFrame(annotate_tab, text=" " + annot_frame_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, fg='darkblue', borderwidth=2)
-annot_frame.configure(font=(text_font, first_level_frame_font_size, "bold"))
-annot_frame.pack(fill="x", anchor = "s", expand=False)
-annot_frame.columnconfigure(0, weight=1, minsize=label_width*2)
-annot_frame.columnconfigure(1, weight=1, minsize=widget_width*2)
-
-# select folder
-lbl_annot_dir_txt = ["Select folder with images to annotate", "Seleccionar carpeta con imágenes a anotar"]
-row_annot_dir = 0
-lbl_annot_dir = Label(master=annot_frame, text=lbl_annot_dir_txt[lang], width=1, anchor="w")
-lbl_annot_dir.grid(row=row_annot_dir, sticky='nesw', pady=2)
-var_annot_dir = StringVar()
-var_annot_dir_short = StringVar()
-dsp_annot_dir = Label(master=annot_frame, textvariable=var_annot_dir_short, fg='darkred')
-btn_annot_dir = Button(master=annot_frame, text=browse_txt[lang], width=1, command=lambda: [browse_dir(var_annot_dir, var_annot_dir_short, dsp_annot_dir, 50, row_annot_dir, 0, 'e'), grid_annot_classes()])
-btn_annot_dir.grid(row=row_annot_dir, column=1, sticky='nesw', padx=5)
-
-# provide classes
-lbl_annot_classes_txt = ["Provide classes (separated by commas)", "Proporcionar clases (separadas por comas)"]
-row_annot_classes = 1
-lbl_annot_classes = tk.Label(annot_frame, text=lbl_annot_classes_txt[lang], pady=2, width=1, anchor="w")
-var_annot_classes = StringVar()
-ent_annot_classes = tk.Entry(annot_frame, width=1, textvariable=var_annot_classes, fg='grey')
-example_classes = ['dog, cat, cow, polar bear, rat', 'perro, gato, vaca, oso polar, rata']
-ent_annot_classes.insert(0, f"{eg_txt[lang]}: {example_classes[lang]}")
-ent_annot_classes.bind("<FocusIn>", annot_classes_focus_in)
-
-# button
-btn_start_annot_txt = ["Start annotation", "Comenzar anotación"]
-btn_start_annot = Button(annotate_tab, text=btn_start_annot_txt[lang], command=start_annotation)
-btn_start_annot.pack()
-
-# set minsize for all rows inside labelframes...
-for frame in [fst_step, snd_step, img_frame, vid_frame, trd_step, sep_frame, annot_create_frame, req_params, adv_params, annot_frame]:
-    set_minsize_rows(frame)
-
-# ... but not for the hidden rows
-snd_step.grid_rowconfigure(row_md_thresh, minsize=0) # model tresh
-snd_step.grid_rowconfigure(row_image_size_for_deploy, minsize=0) # image size for deploy
-req_params.grid_rowconfigure(row_model_architecture, minsize=0) # model architecture
-adv_params.grid_rowconfigure(row_n_freeze_layers, minsize=0) # n frozen layers
-adv_params.grid_rowconfigure(row_n_generations, minsize=0) # n generations
-
-# help tab
-scroll = Scrollbar(help_tab)
-help_text = Text(help_tab, width=1, height=1, wrap=WORD, yscrollcommand=scroll.set) 
-help_text.config(spacing1=2, spacing2=3, spacing3=2)
-help_text.tag_config('intro', font=f'{text_font} {int(13 * text_size_adjustment_factor)} italic', foreground='black', lmargin1=10, lmargin2=10, underline = False) 
-help_text.tag_config('tab', font=f'{text_font} {int(16 * text_size_adjustment_factor)} bold', foreground='black', lmargin1=10, lmargin2=10, underline = True) 
-help_text.tag_config('frame', font=f'{text_font} {int(15 * text_size_adjustment_factor)} bold', foreground='darkblue', lmargin1=15, lmargin2=15) 
-help_text.tag_config('feature', font=f'{text_font} {int(14 * text_size_adjustment_factor)} normal', foreground='black', lmargin1=20, lmargin2=20, underline = True) 
-help_text.tag_config('explanation', font=f'{text_font} {int(13 * text_size_adjustment_factor)} normal', lmargin1=25, lmargin2=25)
-hyperlink1 = HyperlinkManager(help_text)
-
-# import images for help tab
-yolo_models=Image.open(os.path.join(EcoAssist_files, "EcoAssist", "imgs", "yolo_models.png"))
-yolo_models=yolo_models.resize((int(yolo_models.size[0] / 5), int(yolo_models.size[1] / 5)))
-yolo_models=ImageTk.PhotoImage(yolo_models)
-data_augs=Image.open(os.path.join(EcoAssist_files, "EcoAssist", "imgs", "data_augmentations.jpg"))
-data_augs=data_augs.resize((int(data_augs.size[0] / 5), int(data_augs.size[1] / 5)))
-data_augs=ImageTk.PhotoImage(data_augs)
-
-# function to write text which can be called when user changes language settings
-def write_help_tab():
-    global help_text
-    line_number = 1 
-
-    # intro sentence
-    help_text.insert(END, ["Below you can find detailed documentation for each setting. If you have any questions, feel free to contact me on ",
-                           "A continuación encontrarás documentación detallada sobre cada ajuste. Si tienes alguna pregunta, no dudes en ponerte en contacto conmigo en "][lang])
-    help_text.insert(INSERT, "petervanlunteren@hotmail.com", hyperlink1.add(partial(webbrowser.open, "mailto:petervanlunteren@hotmail.com")))
-    help_text.insert(END, [" or raise an issue on the ", " o plantear una incidencia en "][lang])
-    help_text.insert(INSERT, ["GitHub page", "la página de GitHub"][lang], hyperlink1.add(partial(webbrowser.open, "https://github.com/PetervanLunteren/EcoAssist/issues")))
-    help_text.insert(END, ".\n\n")
-    help_text.tag_add('intro', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # deploy tab
-    help_text.insert(END, ["DEPLOY TAB\n", "PESTAÑA DESPLIEGUE\n"][lang])
-    help_text.tag_add('tab', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-
-    # first step
-    help_text.insert(END, f"{fst_step_txt[lang]}\n")
-    help_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.insert(END, f"{browse_txt[lang]}\n")
-    help_text.insert(END, ["Here you can browse for a folder which contains images and/or video\'s. The model will be deployed on this directory, as well as the post-processing analyses.\n\n",
-                           "Aquí puede buscar una carpeta que contenga imágenes y/o vídeos. El modelo se desplegará en este directorio, así como los análisis de post-procesamiento.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # second step
-    help_text.insert(END, f"{snd_step_txt[lang]}\n")
-    help_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-
-    # model
-    help_text.insert(END, f"{lbl_model_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can indicate the yolov5 model that you want to deploy. If the dropdown option 'Custom model' is selected, you will be prompted to select "
-                    "a .pt model file. This can be a custom model trained via EcoAssist. The preloaded 'MegaDetector' models detect animals, people, and vehicles in camera "
-                    "trap imagery. It does not identify the animals; it just finds them. Version A and B differ only in their training data. Each model can outperform the "
-                    "other slightly, depending on your data. Try them both and see which one works best for you. If you really don't have a clue, just stick with the default"
-                    " 'MegaDetector 5a'. More info about MegaDetector models ",
-                    "Aquí puede indicar el modelo yolov5 que desea desplegar. Si se selecciona la opción desplegable 'Modelo personalizado', se le pedirá que seleccione un "
-                    "archivo de modelo con extensión .pt. Puede tratarse de un modelo personalizado entrenado mediante EcoAssist. Los modelos 'MegaDetector' preinstalados "
-                    "detectan animales, personas y vehículos en las imágenes de las cámaras trampa. No identifica a los animales, sólo los encuentra. Las versiones A y B sólo"
-                    " difieren en sus datos de entrenamiento. Cada modelo puede superar ligeramente al otro, dependiendo de sus datos. Pruebe los dos y vea cuál le funciona mejor. "
-                    "Si realmente no tienes ni idea, quédate con el 'MegaDetector 5a' por defecto. Más información sobre los modelos MegaDetector "][lang])
-    help_text.insert(INSERT, ["here", "aquí"][lang], hyperlink1.add(partial(webbrowser.open, "https://github.com/ecologize/CameraTraps/blob/main/megadetector.md#megadetector-v50-20220615")))
-    help_text.insert(END, ".\n\n")
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # exclude subs
-    help_text.insert(END, f"{lbl_exclude_subs_txt[lang]}\n")
-    help_text.insert(END, ["By default, EcoAssist will recurse into subdirectories. Select this option if you want to ignore the subdirectories and process only the "
-                    "files directly in the chosen folder.\n\n",
-                    "Por defecto, EcoAssist buscará en los subdirectorios. Seleccione esta opción si desea ignorar los subdirectorios y procesar sólo los archivos directamente en la carpeta elegida.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # exclude detections
-    help_text.insert(END, f"{lbl_excl_detecs_txt[lang]} / {lbl_md_thresh_txt[lang]}\n")
-    help_text.insert(END, ["This option will exclude detections from the output file. Please don't use this confidence threshold in order to set post-processing features"
-                    " or third party software. The idea is that the output file contains everything that the model can find, and all processes which use this output file "
-                    "will have their own ways of handling the confidence values. Once detections are excluded from the output file, there is no way of getting it back. "
-                    "It is strongly advised to not exclude detections from the output file. Only set the confidence threshold to a very small value if you really know what"
-                    " you're doing. If you, because for some reason, want an extra-small output file, you would typically use a threshold of 0.01 or 0.05. To adjust the "
-                    "threshold value, you can drag the slider or press either sides next to the slider for a 0.005 reduction or increment. Confidence values are within the "
-                    "[0.005, 1] interval.\n\n", "Esta opción excluirá las detecciones desde el archivo de salida. No utilice este umbral de confianza para configurar funciones"
-                    " de post-procesamiento o software de terceros. La idea es que el fichero de salida contenga todo lo que el modelo pueda encontrar, y todos los procesos "
-                    "que utilicen este fichero de salida tendrán sus propias formas de manejar los valores de confianza. Una vez excluidas las detecciones del fichero de salida,"
-                    " no hay forma de recuperarlas. Se recomienda encarecidamente no excluir detecciones del fichero de salida. Ajuste el umbral de confianza a un valor muy pequeño"
-                    " sólo si realmente sabe lo que está haciendo. Si usted, por alguna razón, desea un fichero de salida extra pequeño, normalmente utilizaría un umbral de 0.01 o "
-                    "0.05. Para ajustar el valor del umbral, puede arrastrar el control deslizante o pulsar cualquiera de los lados junto al control deslizante para una reducción o "
-                    "incremento de 0.005. Los valores de confianza están dentro del intervalo [0.005, 1].\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # exclude detections
-    help_text.insert(END, f"{lbl_use_custom_img_size_for_deploy_txt[lang]} / {lbl_image_size_for_deploy_txt[lang]}\n")
-    help_text.insert(END, ["EcoAssist will resize the images before they get processed. EcoAssist will by default resize the images to 1280 pixels. "
-                    "Deploying a model with a lower image size will reduce the processing time, but also the detection accuracy. Best results are obtained if you use the"
-                    " same image size as the model was trained on. If you trained a model in EcoAssist using the default image size, you should set this value to 640 for "
-                    "the YOLOv5 models. Use the default for the MegaDetector models.\n\n",
-                    "EcoAssist redimensionará las imágenes antes de procesarlas. Por defecto, EcoAssist redimensionará las imágenes a 1280 píxeles. Desplegar un modelo "
-                    "con un tamaño de imagen inferior reducirá el tiempo de procesamiento, pero también la precisión de la detección. Los mejores resultados se obtienen "
-                    "si se utiliza el mismo tamaño de imagen con el que se entrenó el modelo. Si ha entrenado un modelo en EcoAssist utilizando el tamaño de imagen por "
-                    "defecto, debe establecer este valor en 640 para los modelos YOLOv5. Utilice el valor por defecto para los modelos MegaDetector.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # use absolute paths
-    help_text.insert(END, f"{lbl_abs_paths_txt[lang]}\n")
-    help_text.insert(END, ["By default, the paths in the output file are relative (i.e. 'image.jpg') instead of absolute (i.e. '/path/to/some/folder/image.jpg'). This "
-                    "option will make sure the output file contains absolute paths, but it is not recommended. Third party software (such as ",
-                    "Por defecto, las rutas en el archivo de salida son relativas (es decir, 'imagen.jpg') en lugar de absolutas (es decir, '/ruta/a/alguna/carpeta/"
-                    "imagen.jpg'). Esta opción se asegurará de que el archivo de salida contenga rutas absolutas, pero no se recomienda. Software de terceros (como "][lang])
-    help_text.insert(INSERT, "Timelapse", hyperlink1.add(partial(webbrowser.open, "https://saul.cpsc.ucalgary.ca/timelapse/")))
-    help_text.insert(END, [") will not be able to read the output file if the paths are absolute. Only enable this option if you know what you are doing. More information"
-                    " how to use Timelapse in conjunction with MegaDetector, see the ",
-                    ") no serán capaces de leer el archivo de salida si las rutas son absolutas. Solo active esta opción si sabe lo que está haciendo. Para más información"
-                    " sobre cómo utilizar Timelapse junto con MegaDetector, consulte "][lang])
-    help_text.insert(INSERT, ["Timelapse Image Recognition Guide", "la Guía de Reconocimiento de Imágenes de Timelapse"][lang], hyperlink1.add(partial(webbrowser.open, "https://saul.cpsc.ucalgary.ca/timelapse/uploads/Guides/TimelapseImageRecognitionGuide.pdf")))
-    help_text.insert(END, ".\n\n")
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # use checkpoints
-    help_text.insert(END, f"{lbl_use_checkpnts_txt[lang]}\n")
-    help_text.insert(END, ["This is a functionality to save results to checkpoints intermittently, in case a technical hiccup arises. That way, you won't have to restart"
-                    " the entire process again when the process is interrupted.\n\n",
-                    "Se trata de una funcionalidad para guardar los resultados en puntos de control de forma intermitente, en caso de que surja un contratiempo técnico. "
-                    "De esta forma, no tendrás que reiniciar todo el proceso de nuevo cuando éste se interrumpa.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # checkpoint frequency
-    help_text.insert(END, f"{lbl_checkpoint_freq_txt[lang]}\n")
-    help_text.insert(END, ["Fill in how often you want to save the results to checkpoints. The number indicates the number of images after which checkpoints will be saved."
-                    " The entry must contain only numeric characters.\n\n",
-                    "Introduzca la frecuencia con la que desea guardar los resultados en los puntos de control. El número indica el número de imágenes tras las cuales se "
-                    "guardarán los puntos de control. La entrada debe contener sólo caracteres numéricos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # continue from checkpoint
-    help_text.insert(END, f"{lbl_cont_checkpnt_txt[lang]}\n")
-    help_text.insert(END, ["Here you can choose to continue from the last saved checkpoint onwards so that the algorithm can continue where it left off. Checkpoints are"
-                    " saved into the main folder and look like 'checkpoint_<timestamp>.json'. When choosing this option, it will search for a valid"
-                    " checkpoint file and prompt you if it can't find it.\n\n",
-                    "Aquí puede elegir continuar desde el último punto de control guardado para que el algoritmo pueda continuar donde lo dejó. Los puntos de control se "
-                    "guardan en la carpeta principal y tienen el aspecto 'checkpoint_<fecha y hora>.json'. Al elegir esta opción, se buscará un archivo de punto de control "
-                    "válido y se le preguntará si no puede encontrarlo.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # don't process every frame
-    help_text.insert(END, f"{lbl_not_all_frames_txt[lang]}\n")
-    help_text.insert(END,["When processing every frame of a video, it can take a long time to finish. Here, you can specify whether you want to analyse only a selection of frames."
-                    f" At '{lbl_nth_frame_txt[lang]}' you can specify how many frames you want to be analysed.\n\n",
-                     "Procesar todos los fotogramas de un vídeo puede llevar mucho tiempo. Aquí puede especificar si desea analizar sólo una selección de fotogramas. "
-                    f"En '{lbl_nth_frame_txt[lang]}' puedes especificar cuántos fotogramas quieres que se analicen.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # analyse every nth frame
-    help_text.insert(END, f"{lbl_nth_frame_txt[lang]}\n")
-    help_text.insert(END, ["Specify how many frames you want to process. By entering 2, you will process every 2nd frame and thus cut process time by half. By entering 10, "
-                    "you will shorten process time to 1/10, et cetera. However, keep in mind that the chance of detecting something is also cut to 1/10.\n\n",
-                    "Especifique cuántos fotogramas desea procesar. Introduciendo 2, procesará cada 2 fotogramas y reducirá así el tiempo de proceso a la mitad. Introduciendo "
-                    "10, reducirá el tiempo de proceso a 1/10, etcétera. Sin embargo, tenga en cuenta que la probabilidad de detectar algo también se reduce a 1/10.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # third step
-    help_text.insert(END, f"{trd_step_txt[lang]}\n")
-    help_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-
-    # destination folder
-    help_text.insert(END, f"{lbl_output_dir_txt[lang]}\n")
-    help_text.insert(END, ["Here you can browse for a folder in which the results of the post-processing features will be placed. If nothing is selected, the folder "
-                    "chosen at step one will be used as the destination folder.\n\n",
-                    "Aquí puede buscar una carpeta en la que se colocarán los resultados de las funciones de postprocesamiento. Si no se selecciona nada, la carpeta "
-                    "elegida en el primer paso se utilizará como carpeta de destino.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # separate files
-    help_text.insert(END, f"{lbl_separate_files_txt[lang]}\n")
-    help_text.insert(END, ["This function divides the files into subdirectories based on their detections. Please be warned that this will be done automatically. "
-                    "There will not be an option to review and adjust the detections before the images will be moved. If you want that (a human in the loop), take a look at ",
-                    "Esta función divide los archivos en subdirectorios en función de sus detecciones. Tenga en cuenta que esto se hará automáticamente. No habrá opción de "
-                    "revisar y ajustar las detecciones antes de mover las imágenes. Si quieres eso (una humano en el bucle), echa un vistazo a "][lang])
-    help_text.insert(INSERT, "Timelapse", hyperlink1.add(partial(webbrowser.open, "https://saul.cpsc.ucalgary.ca/timelapse/")))
-    help_text.insert(END, [", which offers such a feature. More information about that ",
-                           ", que ofrece tal característica. Más información al respecto "][lang])
-    help_text.insert(INSERT, ["here", "aquí"][lang], hyperlink1.add(partial(webbrowser.open, "https://saul.cpsc.ucalgary.ca/timelapse/uploads/Guides/TimelapseImageRecognitionGuide.pdf")))
-    help_text.insert(END,[" (starting on page 9). The process of importing the output file produced by EcoAssist into Timelapse is described ",
-                          " (a partir de la página 9). El proceso de importación del archivo de salida producido por EcoAssist en Timelapse se describe "][lang])
-    help_text.insert(INSERT, ["here", "aquí"][lang], hyperlink1.add(partial(webbrowser.open, "https://saul.cpsc.ucalgary.ca/timelapse/pmwiki.php?n=Main.DownloadMegadetector")))
-    help_text.insert(END,".\n\n")
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # method of file placement
-    help_text.insert(END, f"{lbl_file_placement_txt[lang]}\n")
-    help_text.insert(END, ["Here you can choose whether to move the files into subdirectories, or copy them so that the originals remain untouched.\n\n",
-                           "Aquí puedes elegir si quieres mover los archivos a subdirectorios o copiarlos de forma que los originales permanezcan intactos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # sort results based on confidence
-    help_text.insert(END, f"{lbl_sep_conf_txt[lang]}\n")
-    help_text.insert(END, ["This feature will further separate the files based on its confidence value (in tenth decimal intervals). That means that each class will"
-                        " have subdirectories like e.g. 'conf_0.6-0.7', 'conf_0.7-0.8', 'conf_0.8-0.9', etc.\n\n",
-                        "Esta función separará aún más los archivos en función de su valor de confianza (en intervalos decimales). Esto significa que cada clase tendrá"
-                        " subdirectorios como, por ejemplo, 'conf_0.6-0.7', 'conf_0.7-0.8', 'conf_0.8-0.9', etc.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # visualize files
-    help_text.insert(END, f"{lbl_vis_files_txt[lang]}\n")
-    help_text.insert(END, ["This functionality draws boxes around the detections and prints their confidence values. This can be useful to visually check the results."
-                    " Videos can't be visualized using this tool. Please be aware that this action is permanent and cannot be undone. Be wary when using this on original images.\n\n",
-                    "Esta funcionalidad dibuja recuadros alrededor de las detecciones e imprime sus valores de confianza. Esto puede ser útil para comprobar visualmente los "
-                    "resultados. Los vídeos no pueden visualizarse con esta herramienta.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # crop files
-    help_text.insert(END, f"{lbl_crp_files_txt[lang]}\n")
-    help_text.insert(END, ["This feature will crop the detections and save them as separate images. Not applicable for videos.\n\n",
-                           "Esta función recortará las detecciones y las guardará como imágenes separadas. No es aplicable a los vídeos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # create yolo annotations
-    help_text.insert(END, f"{lbl_yol_files_txt[lang]}\n")
-    help_text.insert(END, ["When training your own model using machine learning using the yolov5 software, the images need to be annotated in yolo format. This feature "
-                    "does that by creating individual text files for each image containing their detections, and one text file containing all the classes. If these "
-                    "annotations are in the same folder as the images, you can visually review and adjust them using the Annotate tab. Not applicable to videos.\n\n",
-                    "Para entrenar su propio modelo mediante aprendizaje automático con el software yolov5, es necesario anotar las imágenes en formato yolo. Esta función"
-                    " lo hace creando archivos de texto individuales para cada imagen que contienen sus detecciones, y un archivo de texto que contiene todas las clases. "
-                    "Si estas anotaciones se encuentran en la misma carpeta que las imágenes, podrá revisarlas y ajustarlas visualmente mediante la pestaña Anotar. No "
-                    "aplicable a los vídeos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # combine files and create unique names
-    help_text.insert(END, f"{lbl_uniquify_txt[lang]}\n")
-    help_text.insert(END, ["This feature will create unique filenames for the images containing a detection and their associated annotation files. Empty images will not be "
-                           "processed with this feature. This is particularly handy when you want to create training data, since for training all files must be in one folder."
-                           " This way the files will be unique and you won't have replacement problems when adding the files to your existing training data.\n\n", "Esta función"
-                           " creará nombres de archivo únicos para las imágenes que contengan una detección y sus archivos de anotación asociados. Las imágenes vacías no serán"
-                           " procesadas con esta función. Esto es especialmente útil cuando deseas crear datos de entrenamiento, ya que para el entrenamiento todos los archivos"
-                           " deben estar en una carpeta. De esta manera, los archivos serán únicos y no tendrás problemas de reemplazo al agregar los archivos a tus datos de "
-                           "entrenamiento existentes.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # method of file placement
-    help_text.insert(END, f"{lbl_label_placement_txt[lang]}\n")
-    help_text.insert(END, ["Here you can choose whether to move the files into subdirectories, or copy them so that the originals remain untouched.\n\n",
-                           "Aquí puedes elegir si quieres mover los archivos a subdirectorios o copiarlos de forma que los originales permanezcan intactos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # export csv files
-    help_text.insert(END, f"{lbl_csv_txt[lang]}\n")
-    help_text.insert(END, ["This will translate the output files of step 2 into csv files and try to retrieve image metadata like date, settings, and GPS. Can be opened in "
-                           "spreadsheet applications such as Excel and Numbers and imported for further processing in R, Python, etc.\n\n",
-                    "Esto convertirá los archivos de salida del paso 2 en archivos csv e intentará recuperar los metadatos de las imágenes, como la fecha, configuraciones "
-                    "y GPS. Pueden abrirse en aplicaciones de hojas de cálculo como Excel y Numbers e importarse para su posterior procesamiento en R, Python, etc.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # confidence threshold
-    help_text.insert(END, f"{lbl_md_thresh_txt[lang]}\n")
-    help_text.insert(END, ["Detections below this value will not be post-processed. To adjust the threshold value, you can drag the slider or press either sides next to "
-                    "the slider for a 0.005 reduction or increment. Confidence values are within the [0.005, 1] interval. If you set the confidence threshold too high, "
-                    "you will miss some detections. On the other hand, if you set the threshold too low, you will get false positives. When choosing a threshold for your "
-                    f"project, it is important to choose a threshold based on your own data. My advice is to first visualize your data ('{lbl_vis_files_txt}') with a low "
-                    "threshold to get a feeling of the confidence values in your data. This will show you how sure the model is about its detections and will give you an "
-                    "insight into which threshold will work best for you. If you really don't know, 0.2 is probably a conservative threshold for most projects.\n\n",
-                    "Las detecciones por debajo de este valor no se postprocesarán. Para ajustar el valor del umbral, puede arrastrar el control deslizante o pulsar "
-                    "cualquiera de los lados junto al control deslizante para una reducción o incremento de 0,005. Los valores de confianza están dentro del intervalo "
-                    "[0,005, 1]. Si ajusta el umbral de confianza demasiado alto, pasará por alto algunas detecciones. Por otro lado, si fija el umbral demasiado bajo, "
-                    "obtendrá falsos positivos. Al elegir un umbral para su proyecto, es importante elegir un umbral basado en sus propios datos. Mi consejo es que primero"
-                    f" visualice sus datos ('{lbl_vis_files_txt}') con un umbral bajo para hacerse una idea de los valores de confianza de sus datos. Esto le mostrará lo "
-                    "seguro que está el modelo sobre sus detecciones y le dará una idea de qué umbral funcionará mejor para usted. Si realmente no lo sabe, 0,2 es "
-                    "probablemente un umbral conservador para la mayoría de los proyectos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # train tab
-    help_text.insert(END, ["TRAIN TAB\n", "PESTAÑA ENTRENAMIENTO\n"][lang])
-    help_text.tag_add('tab', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-
-    # training type
-    help_text.insert(END, f"{req_params_txt[lang]}\n")
-    help_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.insert(END, f"{lbl_train_type_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can specify whether you want to start a new training or resume an existing one. If you want to resume, you'll need to specify the checkpoint"
-                    f" file at '{lbl_resume_checkpoint_txt[lang]}'.\n\n",
-                    "Aquí puede especificar si desea iniciar un nuevo entrenamiento o reanudar uno existente. Si desea reanudar, tendrá que especificar el archivo de punto de "
-                    f"control en '{lbl_resume_checkpoint_txt[lang]}'.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # folder with labelled data
-    help_text.insert(END, f"{lbl_annotated_data_txt[lang]}\n")
-    help_text.insert(END, ["Browse the folder containing images and annotations in yolo format. All data should be in this folder, not in subfolders. EcoAssist will randomly partition"
-                    " the data into a training, test and validation set (based on the proportions set by you). You can annotate your data using the 'Annotate' tab, or (if you"
-                    f" already have a model which can detect the objects of interest) the post-processing feature '{lbl_yol_files_txt[lang]}' in the 'Deploy' tab.\n\n",
-                    "Examine la carpeta que contiene las imágenes y anotaciones en formato YOLO. Todos los datos deben estar en esta carpeta, no en subcarpetas. EcoAssist dividirá "
-                    "aleatoriamente los datos en un conjunto de entrenamiento, prueba y validación (basado en las proporciones establecidas por usted). Puede anotar sus imágenes "
-                    f"utilizando la pestaña 'Anotar', o (si ya tiene un modelo que puede detectar los objetos de interés) la función de post-procesamiento '{lbl_yol_files_txt[lang]}' en"
-                    " la pestaña 'Desplegar'.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # retrain from
-    help_text.insert(END, f"{lbl_learning_model_txt[lang]}\n")
-    help_text.insert(END, ["In machine learning, it is possible to reuse an existing model as the starting point for a new model. For example, the MegaDetector model is "
-                    "excellent at detecting animals in camera trap images. We can transfer the knowledge of how an animal looks like to a new model which can, for example,"
-                    " classify species. Here, you can specify which model you would like to transfer knowledge from. If your dataset is relatively small (i.e., not tens of "
-                    "thousands of images), it is advised to train your own custom model using transfer learning. Besides MegaDetector 5a and b, you can choose from "
-                    "five pre-trained yolov5 models (see image below). These go from small and fast to large and slow and are trained on the ",
-                    "En el aprendizaje automático, es posible reutilizar un modelo existente como punto de partida para un nuevo modelo. Por ejemplo, el modelo MegaDetector"
-                    " es excelente para detectar animales en imágenes de cámaras trampa. Podemos transferir los conocimientos sobre el aspecto de un animal a un nuevo modelo"
-                    " que pueda, por ejemplo, clasificar especies. Aquí puede especificar de qué modelo desea transferir los conocimientos. Si su conjunto de datos es "
-                    "relativamente pequeño (es decir, no decenas de miles de imágenes), se aconseja entrenar su propio modelo personalizado utilizando el aprendizaje por "
-                    "transferencia. Además de MegaDetector 5a y b, puede elegir entre cinco modelos yolov5 preentrenados (véase la imagen siguiente). Estos modelos van de "
-                    "pequeños y rápidos a grandes y lentos, y se han entrenado con el conjunto de "][lang])
-    help_text.insert(INSERT, ["COCO dataset", "datos COCO"][lang], hyperlink1.add(partial(webbrowser.open, "https://cocodataset.org/#home")))
-    help_text.insert(END, [" consisting of more than 330,000 images of 80 classes. The larger the model, the better the results. The Nano model is the smallest and fastest and is "
-                    "most suitable for mobile solutions and embedded devices. The small model is perfect for a laptop which doesn't have any GPU acceleration. The medium-sized "
-                    "model provides a good balance between speed and accuracy, but you'll probably want a GPU for this. The large model is ideal for detecting small objects, and "
-                    "the extra-large model is the most accurate of them all (but it takes time and quite some processing power to train and deploy). The last two models are "
-                    "recommended for cloud deployments. You can also specify a custom model or choose to train from scratch, but it is usually not recommended. Only train"
-                    " from scratch if you know what you are doing and have a very large dataset (i.e., around 150.000 images or more).\n\n",
-                    ", compuesto por más de 330.000 imágenes de 80 clases. Cuanto mayor es el modelo, mejores son los resultados. El modelo Ínfimo es el más pequeño y rápido"
-                    " y es el más adecuado para soluciones móviles y dispositivos integrados. El modelo pequeño es perfecto para un portátil que no disponga de aceleración por"
-                    " GPU. El modelo mediano ofrece un buen equilibrio entre velocidad y precisión, pero probablemente necesitarás una GPU para ello. El modelo grande es ideal "
-                    "para detectar objetos pequeños, y el modelo extragrande es el más preciso de todos (pero requiere tiempo y bastante capacidad de procesamiento para entrenarlo"
-                    " y desplegarlo). Los dos últimos modelos se recomiendan para despliegues en la nube. También puedes especificar un modelo personalizado o elegir entrenar desde"
-                    " cero, pero normalmente no se recomienda. Entrena desde cero sólo si sabes lo que estás haciendo y tienes un conjunto de datos muy grande (es decir, alrededor de"
-                    " 150.000 imágenes o más).\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # image of yolo models 
-    help_text.image_create(tk.END, image = yolo_models)
-    help_text.insert(END, "\n\n")
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # model architecture
-    help_text.insert(END, f"{lbl_model_architecture_txt[lang]}\n")
-    help_text.insert(END, ["When training from scratch, you can specify the model architecture here. The options link to the architectures of the models depicted above.\n\n",
-                           "Cuando se entrena desde cero, puede especificar aquí la arquitectura del modelo. Las opciones están vinculadas a las arquitecturas de los modelos"
-                           " descritos anteriormente.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # n epochs
-    help_text.insert(END, f"{lbl_n_epochs_txt[lang]}\n")
-    help_text.insert(END, ["An epoch is one cycle in which all the training data is processed once. The number of epochs required depends on the project. It is recommended to"
-                    " start with 300 epochs and then check the results for overfitting. Reduce the number of epochs if the data is overfitted, and increase if not. Overfitting"
-                    " is indicated by increasing validation losses. You can see this these validation losses in the 'results.png' file located in the destination folder after "
-                    "completing a training. Increase the amount of data or use data augmentation to avoid overfitting.\n\n",
-                    "Una época es un ciclo en el que todos los datos de entrenamiento se procesan una vez. El número de épocas necesarias depende del proyecto. Se recomienda "
-                    "empezar con 300 épocas y comprobar los resultados para ver si hay sobreajuste. Reduzca el número de épocas si los datos están sobreajustados y auméntelo "
-                    "si no lo están. El sobreajuste se indica mediante el aumento de las pérdidas de validación. Puede ver estas pérdidas de validación en el archivo 'results.png'"
-                    " situado en la carpeta de destino después de completar un entrenamiento. Aumente la cantidad de datos o utilice el aumento de datos para evitar el "
-                    "sobreajuste.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # destination folder
-    help_text.insert(END, f"{lbl_output_dir_txt[lang]}\n")
-    help_text.insert(END, ["Select the folder in which you want the results to be placed.\n\n", "Seleccione la carpeta en la que desea colocar los resultados.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # project name
-    help_text.insert(END, ["Project name\n", "Nombre del proyecto\n"][lang])
-    help_text.insert(END, ["Specify the name of the project. Results will be saved in the folder <destination folder>\<project name>\<run name>\.\n\n",
-                           "Especifique el nombre del proyecto. Los resultados se guardarán en la carpeta <carpeta de destino>\<nombre del proyecto>\<nombre de la ejecución>\.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # resume checkpoint
-    help_text.insert(END, f"{lbl_resume_checkpoint_txt[lang]}\n")
-    help_text.insert(END, ["If your training was interrupted and you want to resume where you left off, you can specify the resume checkpoint here. It is the last.pt file"
-                    " in the weights subfolder of the training you want to resume. For example: Project_name\exp\weights\last.pt.\n\n",
-                    "Si tu entrenamiento fue interrumpido y quieres reanudarlo donde lo dejaste, puedes especificar aquí el punto de control de reanudación. Es el 'last.pt'"
-                    " en la subcarpeta 'weights' del entrenamiento que desea reanudar. Por ejemplo: Nombre_del_proyecto\exp\weights\last.pt.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # validation prop
-    help_text.insert(END, f"{adv_params_txt[lang]}\n")
-    help_text.tag_add('frame', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.insert(END, f"{lbl_val_prop_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can select the proportion of images which will be randomly selected to become the validation subset. Validation images are required,"
-                    " so choosing 0 is not allowed. To adjust the value, you can drag the slider or press either sides next to the slider for a 0.01 reduction or increment."
-                    " Values are within the [0.01, 1] interval.\n\n",
-                    "Aquí puede seleccionar la proporción de imágenes que se seleccionarán aleatoriamente para convertirse en el subconjunto de validación. Las imágenes de "
-                    "validación son obligatorias, por lo que no se permite elegir 0. Para ajustar el valor, puede arrastrar el control deslizante o pulsar cualquiera de los "
-                    "lados junto al control deslizante para una reducción o incremento de 0.01. Los valores están dentro del intervalo [0.01, 1].\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # test prop
-    help_text.insert(END, f"{lbl_test_prop_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can select the proportion of images which will be randomly selected to become the test subset. Test images are not required, so choosing"
-                    " 0 is allowed. To adjust the value, you can drag the slider or press either sides next to the slider for a 0.01 reduction or increment. Values are within"
-                    " the [0, 1] interval.\n\n",
-                    "Aquí puede seleccionar la proporción de imágenes que se seleccionarán aleatoriamente para convertirse en el subconjunto de prueba. Las imágenes de prueba "
-                    "no son necesarias, por lo que se permite elegir 0. Para ajustar el valor, puede arrastrar el control deslizante o pulsar cualquiera de los lados junto al "
-                    "control deslizante para una reducción o incremento de 0,01. Los valores están dentro del intervalo [0, 1].\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # search for GPU
-    help_text.insert(END, f"{lbl_train_gpu_txt[lang]}\n")
-    help_text.insert(END, ["If enabled, EcoAssist will check your device for any suitable GPU and use it to train on.\n\n",
-                           "Si está activada, EcoAssist buscará en tu dispositivo una GPU adecuada y la utilizará para entrenar.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # batch size
-    help_text.insert(END, f"{lbl_batch_size_txt[lang]}\n")
-    help_text.insert(END, ["The batch size is the number of training examples used in one iteration. The larger the batch size, the more processing power you'll need. For "
-                    "the best results, use the largest batch size that your hardware allows for. Leave the entry box empty to automatically check and use the maximum batch"
-                    " size your device can handle. If your device has no GPU acceleration, the default is 16. Try lowering this if you run into out-of-memory errors.\n\n",
-                    "El tamaño del lote es el número de ejemplos de entrenamiento utilizados en una iteración. Cuanto mayor sea el tamaño del lote, más potencia de procesamiento"
-                    " necesitará. Para obtener los mejores resultados, utilice el tamaño de lote más grande que permita su hardware. Deje la casilla de entrada vacía para comprobar"
-                    " automáticamente y utilizar el tamaño de lote máximo que su dispositivo puede manejar. Si tu dispositivo no tiene aceleración GPU, el valor por defecto es 16. "
-                    "Pruebe a reducirlo si se producen errores de memoria insuficiente.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # number of dataloader workers
-    help_text.insert(END, f"{lbl_n_workers_txt[lang]}\n")
-    help_text.insert(END, ["Usually, not all images can be loaded into your computers RAM at once. Subsets of the images are therefore loaded at every iteration. This number "
-                    "indicates the maximum amount of workers being set for this dataloading task. Normally, the default of 4 should be fine for most computers, but if you run"
-                    " into out-of-memory errors, it might help to lower the number of dataloaders.\n\n",
-                    "Normalmente, no se pueden cargar todas las imágenes a la vez en la memoria RAM del ordenador. Por lo tanto, subconjuntos de las imágenes se cargan en cada "
-                    "iteración. Este número indica la cantidad máxima de trabajadores para esta tarea de carga de datos. Normalmente, el valor por defecto de 4 debería estar "
-                    "bien para la mayoría de los ordenadores, pero si se encuentra con errores de falta de memoria, podría ayudar a reducir el número de cargadores de "
-                    "datos.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # image size
-    help_text.insert(END, f"{lbl_image_size_for_training_txt[lang]}\n")
-    help_text.insert(END, ["Larger image sizes usually lead to better results, but take longer to process. Training on smaller images will cost less computing power. An image"
-                    " that is twice as large will have 4 times as many pixels to learn from. Resizing images is therefore a crucial part of object detection. Best results are"
-                    " obtained if the same image size is used as the original model you are retraining. Therefore, if you leave the image size entry box empty, EcoAssist will"
-                    " take the image size of the pretrained model you selected (1280 for MegaDetector and 640 for the YOLO models). If you selected a custom model or are "
-                    "training from scratch, the default is 640.\n\n",
-                    "Las imágenes de mayor tamaño suelen dar mejores resultados, pero tardan más en procesarse. El entrenamiento en imágenes más pequeñas costará menos potencia"
-                    " de cálculo. Una imagen el doble de grande tendrá 4 veces más píxeles de los que aprender. Cambiar el tamaño de las imágenes es, por tanto, una parte crucial"
-                    " de la detección de objetos. Los mejores resultados se obtienen si se utiliza el mismo tamaño de imagen que el modelo original que se está reentrenando. Por "
-                    "lo tanto, si deja la casilla de entrada de tamaño de imagen vacía, EcoAssist tomará el tamaño de imagen del modelo preentrenado que haya seleccionado (1280 "
-                    "para MegaDetector y 640 para los modelos YOLO). Si ha seleccionado un modelo personalizado o está entrenando desde cero, el valor por defecto es 640.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # cache
-    help_text.insert(END, f"{lbl_cache_imgs_txt[lang]}\n")
-    help_text.insert(END, ["This feature caches the dataset into your RAM for faster load times.\n\n",
-                           "Esta función almacena en caché el conjunto de datos en la memoria RAM para acelerar los tiempos de carga.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # hyperparam file
-    help_text.insert(END, f"{lbl_hyper_file_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can select an existing or custom hyperparameter configuration file. This consists of parameters like learning rate and data augmentations"
-                    f" options. It's recommened to train with default hyperparameters first ('{dpd_hyper_file_options[lang][0]}') before trying others. A few ready-to-use options are "
-                    "preloaded into EcoAsisst:\n"
-                    f"  - '{dpd_hyper_file_options[lang][0]}' to not specify any hyperparameters and use the default settings\n"
-                    f"  - '{dpd_hyper_file_options[lang][1]}' for small models like {dpd_learning_model_options[lang][2]} and {dpd_learning_model_options[lang][3]}\n"
-                    f"  - '{dpd_hyper_file_options[lang][2]}' for medium sized models like {dpd_learning_model_options[lang][4]}\n"
-                    f"  - '{dpd_hyper_file_options[lang][3]}' for large models like {dpd_learning_model_options[lang][5]}, {dpd_learning_model_options[lang][6]} and MegaDetector\n"
-                    f"  - '{dpd_hyper_file_options[lang][4]}' when training on the ",
-                    "Aquí puede seleccionar un archivo de configuración de hiperparámetros existente o personalizado. Consiste en parámetros como la tasa de aprendizaje y las opciones"
-                    f" de aumento de datos. Se recomienda entrenar primero con los hiperparámetros por defecto ('{dpd_hyper_file_options[lang][0]}') antes de probar otros. EcoAsisst "
-                    "incluye algunas opciones listas para usar:\n"
-                    f"  - '{dpd_hyper_file_options[lang][0]}' para no especificar ningún hiperparámetro y utilizar la configuración por defecto\n"
-                    f"  - '{dpd_hyper_file_options[lang][1]}' para modelos pequeños como {dpd_learning_model_options[lang][2]} y {dpd_learning_model_options[lang][3]}\n"
-                    f"  - '{dpd_hyper_file_options[lang][2]}' para modelos de tamaño medio como {dpd_learning_model_options[lang][4]}\n"
-                    f"  - '{dpd_hyper_file_options[lang][3]}' para modelos grandes como {dpd_learning_model_options[lang][5]}, {dpd_learning_model_options[lang][6]} y MegaDetector\n"
-                    f"  - '{dpd_hyper_file_options[lang][4]}' para entrenar con el conjunto de "][lang])
-    help_text.insert(INSERT, ["Objects365 dataset", "datos Objects365"][lang], hyperlink1.add(partial(webbrowser.open, "https://paperswithcode.com/dataset/objects365")))
-    help_text.insert(END, "\n")
-    help_text.insert(END, 
-                    [f"  - '{dpd_hyper_file_options[lang][5]}' for training on the ",
-                     f"  - '{dpd_hyper_file_options[lang][5]}' para entrenar con el conjunto de "][lang])
-    help_text.insert(INSERT, ["VOC dataset", "datos VOC"][lang], hyperlink1.add(partial(webbrowser.open, "http://host.robots.ox.ac.uk/pascal/VOC/")))
-    help_text.insert(END, "\n")
-    help_text.insert(END, 
-                    [f"  - '{dpd_hyper_file_options[lang][6]}' to select a custom hyperparameter file\n"
-                    f"Please be aware that the optimal settings are project-specific and the '{lbl_evolve_txt[lang]}' option should be used to finetune them for the best results. "
-                    "Hyperparameter evolution can, however, be very time and energy consuming and therefore not always preferable. "
-                    "In general, increasing augmentation hyperparameters will reduce and delay overfitting, allowing for longer trainings and higher final accuracy. YOLOv5 "
-                    "applies online imagespace and colorspace augmentations to present a new and unique augmented mosaic. Images are never presented twice in the same way."
-                    " You can view the effect of your augmentation policy in your train_batch*.jpg images once training starts. These images will be in your train logging "
-                    "directory.\n\n",
-                    f"  - '{dpd_hyper_file_options[lang][6]}' para seleccionar un archivo de hiperparámetros personalizado\n"
-                    f"Tenga en cuenta que los ajustes óptimos son específicos del proyecto y que la opción '{lbl_evolve_txt[lang]}' debe utilizarse para ajustarlos y obtener los "
-                    "mejores resultados. Sin embargo, la evolución de los hiperparámetros puede requerir mucho tiempo y energía, por lo que no siempre es preferible. En general, "
-                    "aumentar los hiperparámetros de aumento reducirá y retrasará el sobreajuste, permitiendo entrenamientos más largos y una mayor precisión final. YOLOv5 aplica "
-                    "aumentos en línea del espacio de imagen y del espacio de color para presentar un mosaico aumentado nuevo y único. Las imágenes nunca se presentan dos veces de "
-                    "la misma forma. Puede ver el efecto de su política de aumento en las imágenes train_batch*.jpg una vez iniciado el entrenamiento. Estas imágenes estarán en su "
-                    "directorio de registro de entrenamiento.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # data augmentation image
-    help_text.image_create(tk.END, image = data_augs)
-    help_text.insert(END, "\n\n")
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # evolve
-    help_text.insert(END, f"{lbl_evolve_txt[lang]}\n")
-    help_text.insert(END, ["Use this feature to fine-tune the hyperparameters for maximum fitness. It will run the base training multiple times and slightly adjust the "
-                    "hyperparameters to find the optimum values. The resulting hyperparameter file is the 'hyp_evolve.yaml' in your train logging directory and"
-                    f" can be used for subsequent trainings. To do so, select the 'hyp_evolve.yaml' file as option under '{dpd_hyper_file_options[lang][6]}' at '{lbl_hyper_file_txt[lang]}'. "
-                    "Please note that evolution is generally expensive and time-consuming. It can take weeks or months to finish, depending on the number of generations "
-                    "you select and your processing power.\n\n",
-                    "Utilice esta función para ajustar con precisión los hiperparámetros con el fin de obtener la máxima calidad. Ejecutará el entrenamiento base varias veces y ajustará"
-                    " ligeramente los hiperparámetros para encontrar los valores óptimos. El archivo de hiperparámetros resultante es el 'hyp_evolve.yaml' en su directorio de registro de"
-                    " entrenamiento y puede utilizarse para entrenamientos posteriores. Para ello, seleccione el archivo 'hyp_evolve.yaml' como opción en "
-                    f"'{dpd_hyper_file_options[lang][6]}' en '{lbl_hyper_file_txt[lang]}'. Tenga en cuenta que la evolución suele ser costosa y requiere mucho tiempo. Puede tardar semanas"
-                    " o meses en completarse, dependiendo del número de generaciones que seleccione y de su capacidad de procesamiento.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # n generations
-    help_text.insert(END, f"{lbl_n_generations_txt[lang]}\n")
-    help_text.insert(END, ["Here, you can specify how often you want the base scenario to be trained during the evolution. A minimum of 300 generations of evolution is "
-                    "recommended for best results. The default 300 is used when the entry box is left blank.\n\n",
-                    "Aquí puede especificar la frecuencia con la que desea que se entrene el escenario base durante la evolución. Se recomienda un mínimo de 300 generaciones"
-                    " de evolución para obtener los mejores resultados. Cuando la casilla de entrada se deja en blanco, se utiliza el valor por defecto 300.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # run name
-    help_text.insert(END, f"{lbl_run_name_txt[lang]}\n")
-    help_text.insert(END, ["Here you can specify the name of the run. Results will be saved in the folder <destination folder>\<project name>\<run name>. If you leave this "
-                    "entry box blank, it will automatically iterate new names: exp, exp2, exp3, etc.\n\n",
-                    "Aquí puede especificar el nombre de la ejecución. Los resultados se guardarán en la carpeta <carpeta de destino>\<nombre del proyecto>\<nombre de la "
-                    "ejecución>. Si deja esta casilla en blanco, se iterarán automáticamente nuevos nombres: exp, exp2, exp3, etc.\n\n"][lang])
-    help_text.tag_add('feature', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=1
-    help_text.tag_add('explanation', f"{str(line_number)}.0", f"{str(line_number)}.end");line_number+=2
-
-    # config help_text
-    help_text.pack(fill="both", expand=True)
-    help_text.configure(font=(text_font, 11, "bold"), state=DISABLED)
-    scroll.config(command=help_text.yview)
-write_help_tab()
-
-# about tab
-about_scroll = Scrollbar(about_tab)
-about_text = Text(about_tab, width=1, height=1, wrap=WORD, yscrollcommand=scroll.set)
-about_text.config(spacing1=2, spacing2=3, spacing3=2)
-about_text.tag_config('title', font=f'{text_font} {int(15 * text_size_adjustment_factor)} bold', foreground='darkblue', lmargin1=10, lmargin2=10) 
-about_text.tag_config('info', font=f'{text_font} {int(13 * text_size_adjustment_factor)} normal', lmargin1=20, lmargin2=20)
-about_text.tag_config('citation', font=f'{text_font} {int(13 * text_size_adjustment_factor)} normal', lmargin1=30, lmargin2=50)
-hyperlink = HyperlinkManager(about_text)
-
-# function to write text which can be called when user changes language settings
-def write_about_tab():
-    global about_text
-    text_line_number=1
-
-    # contact
-    about_text.insert(END, ["Contact\n", "Contacto\n"][lang])
-    about_text.insert(END, ["Please also help me to keep improving EcoAssist and let me know about any improvements, bugs, or new features so that I can keep it up-to-date. You can "
-                           "contact me at ",
-                           "Por favor, ayúdame también a seguir mejorando EcoAssist e infórmame de cualquier mejora, error o nueva función para que pueda mantenerlo actualizado. "
-                           "Puedes ponerte en contacto conmigo en "][lang])
-    about_text.insert(INSERT, "petervanlunteren@hotmail.com", hyperlink.add(partial(webbrowser.open, "mailto:petervanlunteren@hotmail.com")))
-    about_text.insert(END, [" or raise an issue on the ", " o plantear un problema en "][lang])
-    about_text.insert(INSERT, ["GitHub page", "la página de GitHub"][lang], hyperlink.add(partial(webbrowser.open, "https://github.com/PetervanLunteren/EcoAssist/issues")))
-    about_text.insert(END, ".\n\n")
-    about_text.tag_add('title', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('info', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=2
-
-    # ecoassist citation
-    about_text.insert(END, ["EcoAssist citation\n", "Citar EcoAssist\n"][lang])
-    about_text.insert(END, ["If you used EcoAssist in your research, please use the following citation.\n",
-                            "Si ha utilizado EcoAssist en su investigación, utilice la siguiente cita.\n"][lang])
-    about_text.insert(END, "- van Lunteren, P. (2022). EcoAssist: An application for detecting animals in camera trap images using the MegaDetector model. [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.7223363\n\n")
-    about_text.tag_add('title', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('info', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('citation', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=2
-
-    # megadetector citation
-    about_text.insert(END, ["MegaDetector citation\n", "Citar MegaDetector\n"][lang])
-    about_text.insert(END, ["If you used the MegaDetector model to analyse images or retrain your model, please use the following citation.\n",
-                            "Si ha utilizado el modelo MegaDetector para analizar imágenes o volver a entrenar su modelo, utilice la siguiente cita.\n"][lang])
-    about_text.insert(END, "- Beery, S., Morris, D., & Yang, S. (2019). Efficient pipeline for camera trap image review. ArXiv preprint arXiv:1907.06772.\n\n")
-    about_text.tag_add('title', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('info', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('citation', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=2
-
-    # image credits
-    about_text.insert(END, ["Image credits\n", "Créditos de la imagen\n"][lang])
-    about_text.insert(END, ["The beautiful camera trap images of the fox and ocelot displayed at the top were taken from the ",
-                            "Las bellas imágenes del zorro y el ocelote captadas por cámaras trampa que aparecen en la parte superior proceden del conjunto de "][lang])
-    about_text.insert(INSERT, ["WCS Camera Traps dataset", "datos WCS Camera Traps"][lang], hyperlink.add(partial(webbrowser.open, "https://lila.science/datasets/wcscameratraps")))
-    about_text.insert(END, [" provided by the ", " proporcionado por la "][lang])
-    about_text.insert(INSERT, "Wildlife Conservation Society", hyperlink.add(partial(webbrowser.open, "https://www.wcs.org/")))
-    about_text.insert(END, ".\n\n")
-    about_text.tag_add('title', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=1
-    about_text.tag_add('info', str(text_line_number) + '.0', str(text_line_number) + '.end');text_line_number+=2
-
-    # config about_text
-    about_text.pack(fill="both", expand=True)
-    about_text.configure(font=(text_font, 11, "bold"), state=DISABLED)
-    scroll.config(command=about_text.yview)
-write_about_tab()
 
 # main function
 def main():
