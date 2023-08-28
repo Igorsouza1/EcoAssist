@@ -54,7 +54,7 @@ browse_txt = ['Procurar', 'Examinar']
 cancel_txt = ["Cancelar", "Cancelar"]
 change_folder_txt = ['Trocar Pasta', 'Cambiar carpeta']
 view_results_txt = ['Ver Resultado', 'Ver resultados']
-again_txt = ['Novamente?', 'Otra vez?']
+again_txt = ['Novamente?', 'Outra vez?']
 eg_txt = ['E.g.', 'Ejem.']
 new_project_txt = ["<new project>", "<nuevo proyecto>"]
 warning_txt = ["Aviso", "Advertencia"]
@@ -76,7 +76,7 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
     # log
     print(f"EXECUTED: {sys._getframe().f_code.co_name}({locals()})\n")
 
-    # prepare data specific vars
+    # PREPARE AS VARIAVEIS PARA O PROCESSAMENTO IMAGEM / VIDEO
     if data_type == "img":
         recognition_file = os.path.join(src_dir, "image_recognition_file.json")
         progress_postprocess_frame = img_progress_postprocess_frame
@@ -95,12 +95,16 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
     timestamp = str(datetime.date.today()) + str(datetime.datetime.now().strftime("%H%M%S"))
     timestamp = timestamp.replace('-', '')
 
-    # warn user
+    # Verifica se o tipo de dado é um vídeo
     if data_type == "vid":
+        # Se qualquer uma das opções de visualização, recorte ou anotação estiver ativada
         if vis or crp or yol:
+            # Chama uma função para verificar a presença de um arquivo JSON necessário e, em seguida, emite um aviso ao usuário.
+            # Os argumentos da função são listas que contêm mensagens em diferentes idiomas.
             check_json_presence_and_warn_user(["visualize, crop or annotate", "visualizar, recortar o anotar"][lang],
-                                              ["visualizing, cropping or annotating", "visualizando, recortando o anotando"][lang],
-                                              ["visualization, cropping, and annotation", "visualización, recorte y anotación"][lang])
+                                            ["visualizing, cropping or annotating", "visualizando, recortando o anotando"][lang],
+                                            ["visualization, cropping, and annotation", "visualización, recorte y anotación"][lang])
+            # Desativa as opções de visualização, recorte e anotação, definindo-as como False
             vis, crp, yol = [False] * 3
 
     # early exit if user specifies file movement twice (i.e., folder separation and creating folder structure with unique filenames)
@@ -2704,11 +2708,6 @@ es_widget = tk.Button(root, image=es_flag, bg="white", highlightthickness=1, hig
 es_widget.grid(column=0, row=1, sticky='e', pady=(0, 2), padx=(3, 43))
 
 # link to tutorial
-lbl_tutorial_txt = ['Click here for a step-by-step tutorial on how to use EcoAssist.',
-                    'Haga clic aquí para ver un tutorial paso a paso sobre cómo usar EcoAssist (en inglés).']
-lbl_tutorial = Label(master=root, text=lbl_tutorial_txt[lang], anchor="w", bg="white", cursor= "hand2", fg="darkblue", font=(text_font, 13, "underline"))
-lbl_tutorial.grid(row=1, sticky='ns', pady=2, padx=3)
-lbl_tutorial.bind("<Button-1>", lambda e:webbrowser.open_new_tab("https://medium.com/towards-artificial-intelligence/train-and-deploy-custom-object-detection-models-without-a-single-line-of-code-a65e58b57b03"))
 
 # deploy tab
 deploy_tab = ttk.Frame(tabControl)
