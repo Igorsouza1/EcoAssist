@@ -2693,19 +2693,6 @@ check_mark_one_row = ImageTk.PhotoImage(check_mark_one_row)
 check_mark_two_rows = check_mark.resize((45, 45), Image.Resampling.LANCZOS)
 check_mark_two_rows = ImageTk.PhotoImage(check_mark_two_rows)
 
-# english flag button
-gb_flag = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'flags', 'gb.png'))
-gb_flag = gb_flag.resize((30, 20), Image.Resampling.LANCZOS)
-gb_flag = ImageTk.PhotoImage(gb_flag)
-gb_widget = tk.Button(root, image=gb_flag, bg="white", highlightthickness=1, highlightbackground="black", relief="sunken", command=lambda: set_language("gb"))
-gb_widget.grid(column=0, row=1, sticky='e', pady=(0, 2), padx=(3, 5))
-
-# spanish flag button
-es_flag = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'flags', 'es.png'))
-es_flag = es_flag.resize((30, 20), Image.Resampling.LANCZOS)
-es_flag = ImageTk.PhotoImage(es_flag)
-es_widget = tk.Button(root, image=es_flag, bg="white", highlightthickness=1, highlightbackground="white", relief="raised", command=lambda: set_language("es"))
-es_widget.grid(column=0, row=1, sticky='e', pady=(0, 2), padx=(3, 43))
 
 # link to tutorial
 
