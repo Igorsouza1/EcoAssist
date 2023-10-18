@@ -285,13 +285,13 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
         # separate files
         if sep:
             if n_detections == 0:
-                file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
+                file = move_files(file, "vazio", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
             else:
                 if len(unique_labels) > 1:
                     labels_str = "_".join(unique_labels)
                     file = move_files(file, labels_str, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
                 elif len(unique_labels) == 0:
-                    file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
+                    file = move_files(file, "vazio", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
                 else:
                     file = move_files(file, label, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir)
         
@@ -370,7 +370,7 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
             with open(annot_file, 'w') as f:
                 for bbox in bbox_info:
                     # correct for the non-0-index-starting default label map of MD
-                    if inverted_label_map == {'animal': '1', 'person': '2', 'vehicle': '3'}:
+                    if inverted_label_map == {'animal': '1', 'pessoa': '2', 'veiculo': '3'}:
                         class_id = int(inverted_label_map[bbox[0]])-1
                     else:
                         class_id = int(inverted_label_map[bbox[0]])
@@ -1455,7 +1455,7 @@ def move_files(file, detection_type, var_file_placement, max_detection_conf, var
     print(f"EXECUTED: {sys._getframe().f_code.co_name}({locals()})\n")
 
     # squeeze in extra dir if sorting on confidence
-    if var_sep_conf and detection_type != "empty":
+    if var_sep_conf and detection_type != "vazio":
         global conf_dirs
         ceiled_confidence = math.ceil(max_detection_conf * 10) / 10.0
         confidence_dir = conf_dirs[ceiled_confidence]
@@ -2638,16 +2638,16 @@ white_bg_logo = ImageTk.PhotoImage(white_bg_logo)
 grey_bg_logo = ImageTk.PhotoImage(logo)
 
 # prepare fox image
-fox = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'fox.jpg'))
+fox = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'mari.jpeg'))
 full_width, full_height = fox.size
-chosen_width = full_width
-chosen_height = full_width * 0.2
-top = 700
+chosen_width = full_width 
+chosen_height = full_width * 0.4
+top = 130
 bottom = top + chosen_height
 left = 0
 right = chosen_width
 fox = fox.crop((left, top, right, bottom))
-fox = fox.resize((int(resize_img_factor * 422), 84), Image.Resampling.LANCZOS)
+fox = fox.resize((int(resize_img_factor * 422), 150), Image.Resampling.LANCZOS)
 rad = 10
 back = Image.new('RGB', (fox.size[0] + rad, fox.size[1]), (255, 255, 255))
 back.paste(fox, (0, 0))
@@ -2659,16 +2659,16 @@ back.paste(blur, mask=mask)
 fox = ImageTk.PhotoImage(back)
 
 # prepare ocelot image
-ocelot = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'ocelot.jpg'))
+ocelot = Image.open(os.path.join(EcoAssist_files, 'EcoAssist', 'imgs', 'geovani.jpeg'))
 full_width, full_height = ocelot.size
 chosen_width = full_width
-chosen_height = full_width * 0.2
-top = 310
+chosen_height = full_width * 0.47
+top = 650
 bottom = top + chosen_height
 left = 0
 right = chosen_width
 ocelot = ocelot.crop((left, top, right, bottom))
-ocelot = ocelot.resize((int(resize_img_factor * 422), 84), Image.Resampling.LANCZOS) 
+ocelot = ocelot.resize((int(resize_img_factor * 422), 150), Image.Resampling.LANCZOS) 
 back = Image.new('RGB', (ocelot.size[0], ocelot.size[1]), (255, 255, 255))
 back.paste(ocelot, (rad, 0))
 mask = Image.new('L', (ocelot.size[0], ocelot.size[1]), 255)
